@@ -17,3 +17,4 @@ function CardPokedex() {
 }
 
 export default CardPokedex
+// junto com pokedex
