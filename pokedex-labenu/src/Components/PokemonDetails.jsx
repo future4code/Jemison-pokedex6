@@ -2,6 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { goBack } from './../Route/Coordinator';
 import { DivPai, Bar, HeroContent, PhotoFront, PhotoBack, Stats, Types, Moves, Title, Text } from '../Styles/StyleDetails'
+import BulbaBack from '../Styles/img/BulbaBack.png'
+import BulbaFront from '../Styles/img/BulbaFront.png'
 
 function PokemonDetails() {
     const navigate = useNavigate()
@@ -15,43 +17,64 @@ function PokemonDetails() {
             </Bar>
             <HeroContent>
                 <PhotoFront>
-                    <img src="#" alt="Foto de frente" />
+                    <img src={BulbaFront} alt="Foto de frente" />
                 </PhotoFront>
                 <PhotoBack>
-                    <img src="#" alt="Foto de tras" />
+                    <img src={BulbaBack} alt="Foto de tras" />
                 </PhotoBack>
                 <Stats>
                     <Title>
-                        <h3>Stats</h3>
+                        Stats
                     </Title>
                     <Text>
-                        <li>HP: </li>
-                        <li>Attack: </li>
-                        <li>Defense: </li>
-                        <li>Special-Attack: </li>
-                        <li>Special-Defense: </li>
-                        <li>Speed: </li>
+                        <p>HP: </p>
+                    </Text>
+                    <Text>
+                        <p>Attack: </p>
+                    </Text>
+                    <Text>
+                        <p>Defense: </p>
+                    </Text>
+                    <Text>
+                        <p>Special-Attack: </p>
+                    </Text>
+                    <Text>
+                        <p>Special-Defense: </p>
+                    </Text>
+                    <Text>
+                        <p>Speed: </p>
                     </Text>
                 </Stats>
                 <Types>
                     <Title>
-                        <h3>Tipos:</h3>
+                        Tipos
                     </Title>
                     <Text>
-                        <li>Tipo 1</li>
-                        <li>Tipo 2</li>
+                        <p>Tipo 1</p>
+                    </Text>
+                    <Text>
+                        <p>Tipo 2</p>
                     </Text>
                 </Types>
+
                 <Moves>
                     <Title>
-                        <h3>Principais Ataques</h3>
+                        Principais Ataques
                     </Title>
                     <Text>
-                        <li>Ataque 1</li>
-                        <li>Ataque 2</li>
-                        <li>Ataque 3</li>
-                        <li>Ataque 4</li>
-                        <li>Ataque 5</li>
+                        <p>Ataque 1</p>
+                    </Text>
+                    <Text>
+                        <p>Ataque 2</p>
+                    </Text>
+                    <Text>
+                        <p>Ataque 3</p>
+                    </Text>
+                    <Text>
+                        <p>Ataque 4</p>
+                    </Text>
+                    <Text>
+                        <p>Ataque 5</p>
                     </Text>
                 </Moves>
             </HeroContent>
