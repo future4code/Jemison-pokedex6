@@ -1,12 +1,16 @@
 import Rotas from './Route/Rotas';
 import GlobalStyle from './Styles/globalStyles';
+import {useState} from 'react'
+import {PokemonContext} from './Context/Context'
 
 function App() {
+  const [pokemonCart, setPokemonCart] = useState([])
+  
   return (
-    <div>
+    <PokemonContext.Provider value={{pokemonCart,setPokemonCart}}>
       <GlobalStyle/>
       <Rotas />
-    </div>
+    </PokemonContext.Provider>
   );
 }
 

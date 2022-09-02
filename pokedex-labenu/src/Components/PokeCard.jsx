@@ -6,7 +6,7 @@ import {Card, Buttons, ControlButtons, ControlImage} from './../Styles/ StylePok
 
 
 
-function PokeCard ({pokemon}) {
+function PokeCard ({pokemon, addPokemon}) {
     const navigate = useNavigate();
     return (
         <Card>
@@ -14,7 +14,7 @@ function PokeCard ({pokemon}) {
             <img src={pokemon.url} alt={pokemon.name} />
             </ControlImage>
             <ControlButtons>
-                < Buttons>Adicionar à Pokedex</ Buttons>
+                < Buttons onClick={() =>addPokemon(pokemon)}>Adicionar à Pokedex</ Buttons>
                 < Buttons onClick={() => goToDetails(navigate)}>Ver Detalhes</ Buttons>
             </ControlButtons>
         </Card>
