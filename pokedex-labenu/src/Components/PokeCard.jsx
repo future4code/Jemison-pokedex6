@@ -2,15 +2,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { goToDetails } from './../Route/Coordinator';
 import {Card, Buttons, ControlButtons, ControlImage} from './../Styles/ StylePokeCard'
-import sidy from './../Styles/img/sidy.jpeg'
 
 
-function PokeCard() {
+
+
+function PokeCard ({pokemon}) {
     const navigate = useNavigate();
     return (
         <Card>
             <ControlImage>
-            <img src={sidy} alt="Foto do Pokemon" />
+            <img src={pokemon.url} alt={pokemon.name} />
             </ControlImage>
             <ControlButtons>
                 < Buttons>Adicionar à Pokedex</ Buttons>
