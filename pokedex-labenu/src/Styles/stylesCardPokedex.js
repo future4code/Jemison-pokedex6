@@ -16,7 +16,6 @@ img{
 }
 
  p {
-
     font-size:1.2em;
  }
 
@@ -37,6 +36,12 @@ export const Image= styled.div`
 
 display: flex;
 margin-top: 3.5em;
+justify-content: center;
+
+`
+export const FooterButton = styled.div`
+
+display: flex;
 justify-content: center;
 
 `

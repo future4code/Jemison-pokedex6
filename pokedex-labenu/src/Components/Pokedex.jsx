@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToHome } from './../Route/Coordinator';
 import CardPokedex from './CardPokedex';
-import {Buttons } from "../Styles/stylesCardPokedex"
+import {Buttons , FooterButton} from "../Styles/stylesCardPokedex"
 import {HeaderPokedex, HeanderButton,PokemonCard } from "../Styles/stylesPokedex"
 
 function Pokedex() {
@@ -29,9 +29,10 @@ function Pokedex() {
                   {<CardPokedex/>}
                   {<CardPokedex/>}
             </PokemonCard>
-            
-            <Buttons>Avançar</Buttons>
-            <Buttons>Voltar</Buttons>
+            <FooterButton>
+                <Buttons>Avançar</Buttons>
+                <Buttons>Voltar</Buttons>
+            </FooterButton>
         </div>
     )
 }
