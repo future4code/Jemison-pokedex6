@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #CCC;
 `
 export const Bar = styled.div`
@@ -25,9 +25,9 @@ export const HeroContent = styled.div`
     display: grid;
     width: 60vw;
     grid-row-gap: 3em;
-    grid-column-gap: 7em;
+    grid-column-gap: 3em;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
     margin: 7em auto;
 `
 export const PhotoFront = styled.div`
@@ -41,7 +41,7 @@ export const PhotoFront = styled.div`
     box-shadow:12px 12px 10px 5px #BBBBBB;
 
     img {
-        width: 100%;
+        width: 90%;
     }
 `
 export const PhotoBack = styled.div`
@@ -55,7 +55,7 @@ export const PhotoBack = styled.div`
     box-shadow:12px 12px 10px 5px #BBBBBB;
 
     img {
-        width: 100%;
+        width: 90%;
     }
 `
 export const Stats = styled.div`
@@ -71,7 +71,7 @@ export const Stats = styled.div`
 `
 export const Types = styled.div`
     grid-column: 3/4;
-    grid-row: 1/3;
+    grid-row: 1/5;
     background-color: #DDD;
     border: 1px solid #EEE;
     border-radius: 2em;
@@ -101,4 +101,32 @@ export const Text = styled.div`
     p {
         font-size: 2em;
     }
+`
+
+export const NomePokemon = styled.p`
+    color: #222;
+    font-size: 2.5em;
+    margin-top: 1em;
+`
+
+export const Card = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+    width: 25em;
+    height: 30em;
+`
+
+export const CardsHome = styled.div`
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(4, 30em);
+    grid-row-gap: 2em;
+`
+
+export const Image = styled.img`
+    width: 12em;
 `
