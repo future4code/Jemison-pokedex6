@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
 import PokeCard from './PokeCard';
-import { DivPai, CardsHome, Bar } from '../Styles/StyleDetails'
+import { DivPai, CardsHome, Bar, ButtonsHome } from '../Styles/StyleDetails'
 import axios from 'axios';
 
 function Home() {
@@ -10,13 +10,27 @@ function Home() {
     const navigate = useNavigate()
 
     const [listPokemons, setListPokemons] = useState([])
+    const [nextPage, setNextPage] = useState("")
+    const [previousPage, setPreviousPage] = useState("")
+    const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
 
     const getListPokemons = async () => {
-        await axios.get('https://pokeapi.co/api/v2/pokemon/')
+        await axios.get(currentPage)
             .then((res) => {
                 setListPokemons(res.data.results)
+                setNextPage(res.data.next)
+                setPreviousPage(res.data.previous)
             })
             .catch((error) => console.log(error.message))
+    }
+
+    const goToNext = () => {
+        setCurrentPage(nextPage)
+        return currentPage
+    }
+    const goToPrevious = () => {
+        setCurrentPage(previousPage)
+        return currentPage
     }
 
     const teste = [...listPokemons]
@@ -28,7 +42,7 @@ function Home() {
 
     useEffect(() => {
         getListPokemons()
-    }, [])
+    }, [currentPage])
 
     return (
         <DivPai>
@@ -39,6 +53,10 @@ function Home() {
             <CardsHome>
                 {bla}
             </CardsHome>
+            <ButtonsHome>
+                <button onClick={() => {goToPrevious()}}>Previous</button>
+                <button onClick={() => {goToNext()}}>Next Page</button>
+            </ButtonsHome>
         </DivPai>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { DivPai, Bar, HeroContent, PhotoFront, PhotoBack, Stats, Types, Moves, Title, Text } from '../Styles/StyleDetails'
+import { DivDetails, Bar, HeroContent, PhotoFront, PhotoBack, Stats, Types, Moves, Title, Text, Meter, TextStats } from '../Styles/StyleDetails'
 import { goBack } from './../Route/Coordinator';
 import { BASE_URL } from './../Constants/Url';
 import axios from 'axios';
@@ -23,6 +23,7 @@ function PokemonDetails() {
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    
 
     useEffect(() => {
         setIsLoading(true)
@@ -46,7 +47,7 @@ function PokemonDetails() {
     }
 
     return (
-        <DivPai>
+        <DivDetails>
             <Bar>
                 <button onClick={() => goBack(navigate)}>Voltar</button>
                 <h1>{`${capitalizeFirstLetter(pokemonName)} - ${numberPokemon(pokemonID)}`}</h1>
@@ -73,19 +74,19 @@ function PokemonDetails() {
                         Stats
                     </Title>
                     <Text >
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[0].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[0].base_stat}</p>}
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[1].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[1].base_stat}</p>}
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[2].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[2].base_stat}</p>}
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[3].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[3].base_stat}</p>}
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[4].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[4].base_stat}</p>}
-                        {!isLoading && pokeStatus && <p>{capitalizeFirstLetter(`${pokeStatus[5].stat.name}:`)}</p>}
-                        {!isLoading && pokeStatus && <p>{pokeStatus[5].base_stat}</p>}
-
+                        {!isLoading && pokeStatus && <p>HP:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[0].base_stat}></Meter><TextStats>{pokeStatus[0].base_stat}</TextStats></div>}
+                        {!isLoading && pokeStatus && <p>Attack:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[1].base_stat}></Meter><TextStats>{pokeStatus[1].base_stat}</TextStats></div>}
+                        {!isLoading && pokeStatus && <p>Defense:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[2].base_stat}></Meter><TextStats>{pokeStatus[2].base_stat}</TextStats></div>}
+                        {!isLoading && pokeStatus && <p>Special-attack:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[3].base_stat}></Meter><TextStats>{pokeStatus[3].base_stat}</TextStats></div>}
+                        {!isLoading && pokeStatus && <p>Special-defense:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[4].base_stat}></Meter><TextStats>{pokeStatus[4].base_stat}</TextStats></div>}
+                        {!isLoading && pokeStatus && <p>Speed:</p>}
+                        {!isLoading && pokeStatus && <div><Meter min="0" max="190" value={pokeStatus[5].base_stat}></Meter><TextStats>{pokeStatus[5].base_stat}</TextStats></div>}
+                        
                     </Text>
                 </Stats>
                 <Moves>
@@ -101,7 +102,7 @@ function PokemonDetails() {
                     </Text>
                 </Moves>
             </HeroContent>
-        </DivPai>
+        </DivDetails>
     )
 }
 

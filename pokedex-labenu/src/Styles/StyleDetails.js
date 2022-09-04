@@ -1,20 +1,29 @@
 import styled from "styled-components";
 
+export const DivDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #CCC;
+    height: 100vh;
+`
 export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    align-items: center;
     background-color: #CCC;
 `
 export const Bar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     background-color: #444;
     padding: 3em 2em;
 
     h1 {
         font-size: 3em;
+        color: white;
     }
 
     button {
@@ -115,18 +124,38 @@ export const Card = styled.div`
     justify-content: space-between;
     align-items: center;
     border: 2px solid black;
-    width: 25em;
-    height: 30em;
+    width: 35em;
+    height: 25em;
 `
 
 export const CardsHome = styled.div`
     display: grid;
     justify-items: center;
+    align-items: center;
+    margin: 4em auto;
     grid-template-columns: repeat(5,1fr);
     grid-template-rows: repeat(4, 30em);
-    grid-row-gap: 2em;
+    grid-column-gap: 3em;
 `
 
 export const Image = styled.img`
     width: 12em;
+`
+
+export const ButtonsHome = styled.div`
+    display: flex;
+    width: 0 auto;
+`
+
+export const Meter = styled.progress`
+    width: 32em;
+    height: 4em;
+`
+
+export const TextStats = styled.p`
+    margin: -1.45em 7.5em;
+    font-weight: bold;
+    position: absolute;
+    color: #414141;
+    text-shadow: #ccc 1px 1px 0;
 `
