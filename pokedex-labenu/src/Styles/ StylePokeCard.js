@@ -40,3 +40,12 @@ cursor: pointer;
 border: none;
 
 `
+export const NomePokemon = styled.p`
+    color: #222;
+    font-size: 2.5em;
+    margin-top: 1em;
+    `
+
+export const Image = styled.img`
+width: 12em;
+`
