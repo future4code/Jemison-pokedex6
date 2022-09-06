@@ -1,16 +1,15 @@
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { goToDetails } from './../Route/Coordinator';
-import { Container , PokemonName, Card, Image, Buttons, ControlButtons} from '../Styles/StyleDetails'
-
-
-
+import { DivPai, NomePokemon, Card, Image } from '../Styles/StyleDetails'
+import axios from 'axios';
 
 function PokeCard({ nomePokemon, url }) {
-    
+
     const navigate = useNavigate();
+
     const goToDetails = (navigate) => { navigate(`details/${pokemonID}`) }
+
+    const goToTest = (navigate) => { navigate('/details/teste') }
 
     const [isLoading, setIsLoading] = useState(false)
     const [pokemonCard, setPokemonCard] = useState([])
@@ -19,7 +18,7 @@ function PokeCard({ nomePokemon, url }) {
     const pokeSpritesAnim = pokemonCard && pokemonCard.sprites && pokemonCard.sprites.versions['generation-v']['black-white'].animated
 
     const capitalizeFirstLetter = (string) => {
-       return string.charAt(0).toUpperCase() + string.slice(1);
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     useEffect(() => {
@@ -42,18 +41,17 @@ function PokeCard({ nomePokemon, url }) {
         }
     }
 
-
     return (
-        <Container>
+        <DivPai >
             <Card>
-                <PokemonName>{`${numberPokemon(pokemonID)} - ${capitalizeFirstLetter(nomePokemon)}`}</PokemonName>
+                <NomePokemon>{`${numberPokemon(pokemonID)} - ${capitalizeFirstLetter(nomePokemon)}`}</NomePokemon>
                 {!isLoading && pokeSpritesAnim && <Image src={pokeSpritesAnim.front_default} alt={`${pokemonCard.name}_front_image`} />}
-                <ControlButtons>
-                    <Buttons>Capturar</Buttons>
-                    <Buttons onClick={() => goToDetails(navigate)}>Ver Detalhes</Buttons>
-                </ControlButtons>
+                <div>
+                    <button onClick={() => goToTest(navigate)}>Capturar</button>
+                    <button onClick={() => goToDetails(navigate)}>Ver Detalhes</button>
+                </div>
             </Card>
-        </Container>
+        </DivPai>
     )
 }
 

@@ -20,6 +20,7 @@ time, mark, audio, video {
 	font-size: 10px;
 	font-family: 'Inter', sans-serif;
 	vertical-align: baseline;
+	box-sizing:border-box
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
