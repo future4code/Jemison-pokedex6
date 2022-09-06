@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { goToDetails } from './../Route/Coordinator';
+// import { goToDetails } from './../Route/Coordinator';
 
 function CardPokedex() {
     const navigate = useNavigate();
@@ -10,7 +10,7 @@ function CardPokedex() {
             <img src="#" alt="Foto do Pokemon" />
             <div>
                 <button>Remover</button>
-                <button onClick={() => goToDetails(navigate)}>Ver Detalhes</button>
+                {/* <button onClick={() => goToDetails(navigate)}>Ver Detalhes</button> */}
             </div>
         </div>
     )
