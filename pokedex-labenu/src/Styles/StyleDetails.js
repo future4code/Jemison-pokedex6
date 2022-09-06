@@ -8,13 +8,17 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #444;
+    background-color: #d50000;
     padding: 3em 2em;
     h1 {
         font-size: 3em;
     }
     button {
         height: 2em;
+    }
+    img{
+       height: 9em;
+        width: 35em;
     }
 `
 export const HeroContent = styled.div`

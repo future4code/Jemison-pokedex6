@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { goToDetails } from './../Route/Coordinator';
-//import { Card, Buttons, ControlButtons, ControlImage, NomePokemon, Image } from './../Styles/ StylePokeCard'
 import { Container , PokemonName, Card, Image, Buttons, ControlButtons} from '../Styles/StyleDetails'
 
 

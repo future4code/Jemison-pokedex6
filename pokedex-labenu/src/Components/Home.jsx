@@ -4,21 +4,22 @@ import { goToPokedex } from './../Route/Coordinator';
 import PokeCard from './PokeCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Container , CardsHome, Header } from '../Styles/StyleDetails'
+import { Container, CardsHome, Header } from '../Styles/StyleDetails'
+import pokemons from './../Styles/img/pokemon.webp'
 
 
 function Home() {
     const navigate = useNavigate()
     const [listPokemons, setListPokemons] = useState([])
 
-    const getListPokemons =  () => {
+    const getListPokemons = () => {
         axios.get('https://pokeapi.co/api/v2/pokemon/')
             .then((res) => {
                 setListPokemons(res.data.results)
             })
             .catch((error) => console.log(error.message))
     }
-console.log(listPokemons)
+    console.log(listPokemons)
     const spreadListPokemons = [...listPokemons]
     const pokemon = spreadListPokemons.map((i) => {
         return (
@@ -33,16 +34,17 @@ console.log(listPokemons)
 
     return (
         <Container>
-        <Header>
-            <h1>Home</h1>
-            <button onClick={() => goToPokedex(navigate)}>Pokedex</button>
-        </Header>
-        <CardsHome>
-            {pokemon}
-        </CardsHome>
-    </Container>
-)
-    
+            <Header>
+                <h1>Home</h1>
+                <img src={pokemons}></img>
+                <button onClick={() => goToPokedex(navigate)}>Pokedex</button>
+            </Header>
+            <CardsHome>
+                {pokemon}
+            </CardsHome>
+        </Container>
+    )
+
 }
 
 export default Home
