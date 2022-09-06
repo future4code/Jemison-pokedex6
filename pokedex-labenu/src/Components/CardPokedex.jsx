@@ -14,8 +14,8 @@ function CardPokedex() {
             <img src={jon} alt="Foto do Pokemon" />
             </Image>
             <div>
-                < Buttons>Remover</ Buttons>
-                < Buttons onClick={() => goToDetails(navigate)}>Ver Detalhes</ Buttons>
+                <button>Remover</button>
+                {/* <button onClick={() => goToDetails(navigate)}>Ver Detalhes</button> */}
             </div>
         </Card>
         
@@ -25,3 +25,4 @@ function CardPokedex() {
 }
 
 export default CardPokedex
+// junto com pokedex
