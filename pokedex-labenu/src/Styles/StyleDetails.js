@@ -48,7 +48,6 @@ export const PhotoFront = styled.div`
     border: 1px solid #EEE;
     border-radius: 2em;
     box-shadow:12px 12px 10px 5px #BBBBBB;
-
     img {
         width: 90%;
     }
@@ -62,7 +61,6 @@ export const PhotoBack = styled.div`
     border: 1px solid #EEE;
     border-radius: 2em;
     box-shadow:12px 12px 10px 5px #BBBBBB;
-
     img {
         width: 90%;
     }
@@ -97,7 +95,6 @@ export const Moves = styled.div`
     border-radius: 2em;
     box-shadow:12px 12px 10px 5px #BBBBBB;
 `
-
 export const Title = styled.h3`
     text-align: center;
     margin-top: 0.5em;

@@ -56,3 +56,4 @@ function PokeCard({ nomePokemon, url }) {
 }
 
 export default PokeCard
+// component do Home 
