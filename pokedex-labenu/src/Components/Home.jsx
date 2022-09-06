@@ -14,8 +14,8 @@ function Home() {
     const [previousPage, setPreviousPage] = useState("")
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
 
-    const getListPokemons = async () => {
-        await axios.get(currentPage)
+    const getListPokemons = () => {
+        axios.get(currentPage)
             .then((res) => {
                 setListPokemons(res.data.results)
                 setNextPage(res.data.next)
@@ -23,6 +23,8 @@ function Home() {
             })
             .catch((error) => console.log(error.message))
     }
+
+    console.log(listPokemons)
 
     const goToNext = () => {
         setCurrentPage(nextPage)
@@ -54,8 +56,8 @@ function Home() {
                 {bla}
             </CardsHome>
             <ButtonsHome>
-                <button onClick={() => {goToPrevious()}}>Previous</button>
-                <button onClick={() => {goToNext()}}>Next Page</button>
+                <button onClick={() => { goToPrevious() }}>Previous</button>
+                <button onClick={() => { goToNext() }}>Next Page</button>
             </ButtonsHome>
         </DivPai>
     )

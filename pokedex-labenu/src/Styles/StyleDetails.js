@@ -159,3 +159,25 @@ export const TextStats = styled.p`
     color: #414141;
     text-shadow: #ccc 1px 1px 0;
 `
+
+export const Fundo = styled.div`
+    background-color: #262626;
+    position: relative;
+`
+
+export const TypeBackground = styled.div`
+    background-image: url('https://imgur.com/xkwLtx1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h4{
+        position: absolute;
+        margin-bottom: 100px;
+    }
+`
+
+
