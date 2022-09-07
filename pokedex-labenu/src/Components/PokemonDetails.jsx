@@ -1,52 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { TypeBackground, Fundo, Stats, Title, Text, Info, Moves, Types, StatsText, NomePokemon, ImagesDiv, PhotoFront, PhotoBack, BackButton, ActionButton, StatsNumbers, StatsBarDiv, StatsBar } from '../Styles/StylesNovo'
+import { TypeBackground, Fundo, Stats, Title, Text, Info, Moves, Types, StatsText, NomePokemon, ImagesDiv, PhotoFront, PhotoBack, BackButton, ActionButton, StatsNumbers, StatsBarContainer, StatsBarHP, StatsBarAtk, StatsBarDef, StatsBarSAtak, StatsBarSDef, StatsBarSpd } from '../Styles/StylesNovo'
+import GlobalContext from './../Context/GlobalContext';
 import arrow from '../Styles/img/Arrow.png'
 import actionButton1 from '../Styles/img/ActionButton1.png'
 import { useColors } from '../Hooks/useColors';
 import { BASE_URL } from '../Constants/Url';
 import { goBack } from '../Route/Coordinator';
-import axios from 'axios'
 
 function PokemonDetails() {
+    const context = useContext(GlobalContext)
     const navigate = useNavigate()
     const params = useParams();
+    
+    const pokeSpritesAnim = context.pokemonObj && context.pokemonObj.sprites && context.pokemonObj.sprites.versions['generation-v']['black-white'].animated
+    const pokeStatus = context.pokemonObj && context.pokemonObj.stats
+    const pokeTypes = context.pokemonObj && context.pokemonObj.types
+    const pokeMoves = context.pokemonObj && context.pokemonObj.moves
 
-    const [pokemonObj, setPokemonObj] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [pokemonName, setPokemonName] = useState("")
-    const [pokemonID, setPokemonID] = useState("")
-
-    const pokeSpritesAnim = pokemonObj && pokemonObj.sprites && pokemonObj.sprites.versions['generation-v']['black-white'].animated
-    const pokeStatus = pokemonObj && pokemonObj.stats
-    const pokeTypes = pokemonObj && pokemonObj.types
-    const pokeMoves = pokemonObj && pokemonObj.moves
-
-    const [pokemonType, pokemonType2, backgroundImage] = useColors(!isLoading && pokemonObj && pokemonObj.types && pokemonObj.types[0].type.name, !isLoading && pokemonObj && pokemonObj.types && pokemonObj.types[1]?.type.name ? !isLoading && pokemonObj && pokemonObj.types && pokemonObj.types[1].type.name : null)
+    const [pokemonType, pokemonType2, backgroundImage] = useColors(!context.isLoading && context.pokemonObj && context.pokemonObj.types && context.pokemonObj.types[0].type.name, !context.isLoading && context.pokemonObj && context.pokemonObj.types && context.pokemonObj.types[1]?.type.name ? !context.isLoading && context.pokemonObj && context.pokemonObj.types && context.pokemonObj.types[1].type.name : null)
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    useEffect(() => {
-        setIsLoading(true)
-        axios.get(`${BASE_URL}/${params.idPokemon}`)
-            .then((res) => {
-                setIsLoading(false)
-                setPokemonObj(res.data)
-                setPokemonName(res.data.name)
-                setPokemonID(res.data.id)
-            }).catch((error) => console.log(error.message))
-    }, [])
+    context.useRequestDetails(`${BASE_URL}/${params.idPokemon}`)
 
-    const numberPokemon = () => {
-        if (pokemonID < 10) {
-            return (`#00${pokemonID}`)
-        } else if (pokemonID > 10 && pokemonID < 100) {
-            return (`#0${pokemonID}`)
+    const numberPokemon = (numero) => {
+        if (numero < 10) {
+            return (`#00${numero}`)
+        } else if (numero > 10 && numero < 100) {
+            return (`#0${numero}`)
         } else {
-            return (`#${pokemonID}`)
+            return (`#${numero}`)
         }
+    }
+
+    const percentage = (partialValue) => {
+        return ((100 * partialValue) / 180) + "%";
     }
 
     return (
@@ -60,15 +51,15 @@ function PokemonDetails() {
                         <img src={actionButton1} alt="release_button" />
                     </ActionButton>
                     <NomePokemon>
-                        <h1>{`${capitalizeFirstLetter(pokemonName)}`}</h1>
-                        <p>{`${numberPokemon(pokemonID)}`}</p>
+                        <h1>{`${capitalizeFirstLetter(context.pokemonName)}`}</h1>
+                        <p>{`${numberPokemon(context.pokemonID)}`}</p>
                     </NomePokemon>
                     <ImagesDiv>
                         <PhotoFront>
-                            {!isLoading && pokeSpritesAnim && <img src={pokeSpritesAnim.front_default} alt={`${pokemonObj.name}_front_image`} />}
+                            {!context.isLoading && pokeSpritesAnim && <img src={pokeSpritesAnim.front_default} alt={`${context.pokemonObj.name}_front_image`} />}
                         </PhotoFront>
                         <PhotoBack>
-                            {!isLoading && pokeSpritesAnim && <img src={pokeSpritesAnim.back_default} alt={`${pokemonObj.name}_back_image`} />}
+                            {!context.isLoading && pokeSpritesAnim && <img src={pokeSpritesAnim.back_default} alt={`${context.pokemonObj.name}_back_image`} />}
                         </PhotoBack>
                     </ImagesDiv>
                     <Stats>
@@ -81,22 +72,18 @@ function PokemonDetails() {
                             <p>Speed</p>
                         </StatsText>
                         <StatsNumbers >
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[0].base_stat}</p></div>}
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[1].base_stat}</p></div>}
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[2].base_stat}</p></div>}
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[3].base_stat}</p></div>}
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[4].base_stat}</p></div>}
-                            {!isLoading && pokeStatus && <div><p>{pokeStatus[5].base_stat}</p></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[0].base_stat}</p><StatsBarContainer><StatsBarHP width={percentage(pokeStatus && pokeStatus[0].base_stat)}/></StatsBarContainer></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[1].base_stat}</p><StatsBarContainer><StatsBarAtk width={percentage(pokeStatus && pokeStatus[1].base_stat)}/></StatsBarContainer></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[2].base_stat}</p><StatsBarContainer><StatsBarDef width={percentage(pokeStatus && pokeStatus[2].base_stat)}/></StatsBarContainer></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[3].base_stat}</p><StatsBarContainer><StatsBarSAtak width={percentage(pokeStatus && pokeStatus[3].base_stat)}/></StatsBarContainer></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[4].base_stat}</p><StatsBarContainer><StatsBarSDef width={percentage(pokeStatus && pokeStatus[4].base_stat)}/></StatsBarContainer></div>}
+                            {!context.isLoading && pokeStatus && <div><p>{pokeStatus[5].base_stat}</p><StatsBarContainer><StatsBarSpd width={percentage(pokeStatus && pokeStatus[5].base_stat)}/></StatsBarContainer></div>}
                         </StatsNumbers>
-                        <StatsBarDiv>
-                            <StatsBar>
-                            </StatsBar>
-                        </StatsBarDiv>
                     </Stats>
                     <Types>
                         <Text >
                             <img src={pokemonType()} alt="grass_icon" />
-                            {!isLoading && pokeTypes && pokeTypes[1] ? <img src={pokemonType2()} /> : null}
+                            {!context.isLoading && pokeTypes && pokeTypes[1] ? <img src={pokemonType2()} /> : null}
                         </Text>
                     </Types>
                     <Moves>
@@ -104,11 +91,11 @@ function PokemonDetails() {
                             Main Moves
                         </Title>
                         <Text >
-                            {!isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[0].move.name)}</p>}
-                            {!isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[1].move.name)}</p>}
-                            {!isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[2].move.name)}</p>}
-                            {!isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[3].move.name)}</p>}
-                            {!isLoading && pokeMoves && pokeMoves[4] ? <p>{capitalizeFirstLetter(pokeMoves[4].move.name)}</p> : null}
+                            {!context.isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[0].move.name)}</p>}
+                            {!context.isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[1].move.name)}</p>}
+                            {!context.isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[2].move.name)}</p>}
+                            {!context.isLoading && pokeMoves && <p>{capitalizeFirstLetter(pokeMoves[3].move.name)}</p>}
+                            {!context.isLoading && pokeMoves && pokeMoves[4] ? <p>{capitalizeFirstLetter(pokeMoves[4].move.name)}</p> : null}
                         </Text>
                     </Moves>
                 </Info>

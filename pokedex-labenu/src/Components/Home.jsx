@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
 import PokeCard from './PokeCard';
 import axios from 'axios';
-// import { Container, CardsHome, Header } from '../Styles/StyleDetails'
 import { DivPai, CardsHome, Bar, ButtonsHome } from '../Styles/StyleDetails'
 
 function Home() {
@@ -35,8 +34,8 @@ function Home() {
         return currentPage
     }
 
-    const teste = [...listPokemons]
-    const bla = teste.map((i, key) => {
+    const spreadListPokemons = [...listPokemons]
+    const pokemonInfo = spreadListPokemons.map((i, key) => {
         return (
             <PokeCard nomePokemon={i.name} key={i.name} url={i.url} />
         )
@@ -53,7 +52,7 @@ function Home() {
                 <button onClick={() => goToPokedex(navigate)}>Pokedex</button>
             </Bar>
             <CardsHome>
-                {bla}
+                {pokemonInfo}
             </CardsHome>
             <ButtonsHome>
                 <button onClick={() => { goToPrevious() }}>Previous</button>
