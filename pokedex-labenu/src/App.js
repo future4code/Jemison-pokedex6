@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from './Constants/Url'
 
-function App() {
-  
+export default function App() {
+
   return (
     // chamar o GlobalState no lugar da div
     //<GlobalStyle> <Router> <GlobalStyle>
@@ -15,5 +15,3 @@ function App() {
       </div>
   );
 }
-
-export default App;

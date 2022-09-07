@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { goToHome } from './../Route/Coordinator';
 import CardPokedex from './CardPokedex';
 
+
 function Pokedex() {
     const navigate = useNavigate()
 

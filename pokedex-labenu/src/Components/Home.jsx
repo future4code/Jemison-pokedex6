@@ -3,17 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
 import PokeCard from './PokeCard';
 import axios from 'axios';
-// import { Container, CardsHome, Header } from '../Styles/StyleDetails'
 import { DivPai, CardsHome, Bar, ButtonsHome } from '../Styles/StyleDetails'
+
 
 function Home() {
 
     const navigate = useNavigate()
+    
+    const [Pokedex, SetPokedex] = useState([])
     const [listPokemons, setListPokemons] = useState([])
     const [nextPage, setNextPage] = useState("")
     const [previousPage, setPreviousPage] = useState("")
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
-
     const getListPokemons = () => {
         axios.get(currentPage)
             .then((res) => {
@@ -24,7 +25,9 @@ function Home() {
             .catch((error) => console.log(error.message))
     }
 
-    console.log(listPokemons)
+    useEffect(() => {
+        console.log(Pokedex)
+    }, [Pokedex])
 
     const goToNext = () => {
         setCurrentPage(nextPage)
@@ -35,17 +38,21 @@ function Home() {
         return currentPage
     }
 
-    const teste = [...listPokemons]
-    const bla = teste.map((i, key) => {
+    const addPokemonPokedex = (pokemon) => {
+        SetPokedex([...Pokedex, pokemon])
+        const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
+        setListPokemons(newList)
+    }
+
+    const pokemons = [...listPokemons]
+    const pokemon = pokemons.map((i) => {
         return (
-            <PokeCard nomePokemon={i.name} key={i.name} url={i.url} />
+            <PokeCard addPokemonToPokedex={addPokemonPokedex} nomePokemon={i.name} key={i.name} url={i.url} />
         )
     })
-
     useEffect(() => {
         getListPokemons()
     }, [currentPage])
-
     return (
         <DivPai>
             <Bar>
@@ -53,7 +60,7 @@ function Home() {
                 <button onClick={() => goToPokedex(navigate)}>Pokedex</button>
             </Bar>
             <CardsHome>
-                {bla}
+                {pokemon}
             </CardsHome>
             <ButtonsHome>
                 <button onClick={() => { goToPrevious() }}>Previous</button>
@@ -63,5 +70,4 @@ function Home() {
     )
 
 }
-
-export default Home
+export default Home;

@@ -4,9 +4,10 @@ const GlobalState = (props) => {
 
     // Estados aqui 
     //As requisições aqui (TODAS) uma const para cada requisição
-    //const states = passar os estados e a requisição(data)
+    //const states = {passar os estados e a requisição(data)}
+    
     return (
-        <GlobalContext.Provider value={{states}}>
+        <GlobalContext.Provider value={{listPokemons,setListPokemons}}>
             {props.children}
         </GlobalContext.Provider>
     )

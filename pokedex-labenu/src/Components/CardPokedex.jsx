@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 // import { goToDetails } from './../Route/Coordinator';
 
+
 function CardPokedex() {
     const navigate = useNavigate();
 
