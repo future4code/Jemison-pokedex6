@@ -174,6 +174,12 @@ export const ButtonsHome = styled.div`
     width: 0 auto;
 `
 
+export const PokedexVazia = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 export const StatsBarContainer = styled.div`
     position: absolute;
     display: flex;
