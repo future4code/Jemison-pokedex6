@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { DivPai, Card, Image, NomePokemon } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 
-function CardPokedex({ pokeElement }) {
+function CardPokedex({ pokeElement, removePokemon }) {
     const context = useContext(GlobalContext)
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ function CardPokedex({ pokeElement }) {
                 <NomePokemon>{`${numberPokemon(pokeElement.id)} - ${capitalizeFirstLetter(pokeElement.name)}`}</NomePokemon>
                 {!context.isLoading && pokeSpritesAnim && <Image src={pokeSpritesAnim.front_default} alt={`${pokeElement.name}_front_image`} />}
                 <div>
-                    <button>Remover</button>
+                    <button onClick={() => removePokemon(pokeElement)}>Remover</button>
                     <button onClick={() => goToDetails(navigate)}>Ver Detalhes</button>
                 </div>
             </Card>

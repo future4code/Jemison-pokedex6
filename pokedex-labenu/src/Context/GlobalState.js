@@ -9,7 +9,9 @@ const GlobalState = (props) => {
     const [pokemonID, setPokemonID] = useState()
     const [pokemonName, setPokemonName] = useState("")
 
-    const [pokedex, setPokedex] = useState([])
+    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartt') || '[]')
+
+    const [pokedex, setPokedex] = useState(cartFromLocalStorage)
 
     const useRequestDetails = (url) => {
         const getPokemon = () => {
