@@ -7,16 +7,18 @@ import PokeCard from './PokeCard';
 import logo from '../Styles/img/PokeLogo.png'
 import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 import axios from 'axios';
+import { DivPai, CardsHome, Bar, ButtonsHome } from '../Styles/StyleDetails'
+
 
 function Home() {
     const context = useContext(GlobalContext)
     const navigate = useNavigate()
     
+    const [Pokedex, SetPokedex] = useState([])
     const [listPokemons, setListPokemons] = useState([])
     const [nextPage, setNextPage] = useState("")
     const [previousPage, setPreviousPage] = useState("")
     const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
-
     const getListPokemons = () => {
         axios.get(currentPage)
             .then((res) => {
@@ -26,6 +28,10 @@ function Home() {
             })
             .catch((error) => console.log(error.message))
     }
+
+    useEffect(() => {
+        console.log(Pokedex)
+    }, [Pokedex])
 
     const goToNext = () => {
         setCurrentPage(nextPage)
@@ -37,22 +43,20 @@ function Home() {
     }
 
     const addPokemonPokedex = (pokemon) => {
-        context.setPokedex([...context.pokedex, pokemon])
-        // const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
-        // setListPokemons(newList)
+        SetPokedex([...Pokedex, pokemon])
+        const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
+        setListPokemons(newList)
     }
 
-    const spreadListPokemons = [...listPokemons]
-    const pokemons = spreadListPokemons.map((i) => {
+    const pokemons = [...listPokemons]
+    const pokemon = pokemons.map((i) => {
         return (
             <PokeCard addPokemonToPokedex={addPokemonPokedex} nomePokemon={i.name} key={i.name} url={i.url} />
         )
     })
-
     useEffect(() => {
         getListPokemons()
     }, [currentPage])
-
     return (
         <DivPai>
             <BarHome>
@@ -62,7 +66,7 @@ function Home() {
                 </BarLogos>
             </BarHome>
             <CardsHome>
-                {pokemons}
+                {pokemon}
             </CardsHome>
             <ButtonsHome>
                 <button onClick={() => { goToPrevious() }}>Previous</button>
@@ -71,5 +75,4 @@ function Home() {
         </DivPai>
     )
 }
-
-export default Home
+export default Home;

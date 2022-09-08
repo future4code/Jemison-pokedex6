@@ -3,20 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { DivPai, NomePokemon, Card, Image } from '../Styles/StyleDetails'
 import axios from 'axios';
 
-function PokeCard({ nomePokemon, url, addPokemonToPokedex }) {
-    const navigate = useNavigate();
+function PokeCard({ addPokemonToPokedex, nomePokemon, url }) {
+    const navigate = useNavigate("");
     const goToDetails = (navigate) => { navigate(`details/${pokemonID}`) }
-
+    const goToTest = (navigate) => { navigate('/details/teste') }
     const [isLoading, setIsLoading] = useState(false)
     const [pokemonCard, setPokemonCard] = useState([])
     const [pokemonID, setPokemonID] = useState()
 
     const pokeSpritesAnim = pokemonCard && pokemonCard.sprites && pokemonCard.sprites.versions['generation-v']['black-white'].animated
 
+
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-
     useEffect(() => {
         setIsLoading(true)
         axios.get(url)
@@ -36,7 +36,6 @@ function PokeCard({ nomePokemon, url, addPokemonToPokedex }) {
             return (`#${numero}`)
         }
     }
-
     return (
         <DivPai >
             <Card>

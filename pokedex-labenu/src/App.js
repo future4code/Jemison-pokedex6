@@ -3,7 +3,7 @@ import Rotas from './Route/Rotas';
 import GlobalStyle from './Styles/globalStyles';
 import GlobalState from './Context/GlobalState';
 
-function App() {
+export default function App() {
 
   return (
     <GlobalState>
@@ -12,5 +12,3 @@ function App() {
     </GlobalState>
   );
 }
-
-export default App;

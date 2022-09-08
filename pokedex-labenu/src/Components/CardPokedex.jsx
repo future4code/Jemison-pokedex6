@@ -3,8 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { DivPai, Card, Image, NomePokemon } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 
+<<<<<<< HEAD
+
+function CardPokedex() {
+=======
 function CardPokedex({ pokeElement, removePokemon }) {
     const context = useContext(GlobalContext)
+>>>>>>> 33cb2c770be3fabe640fc59e42467985062cd7e7
     const navigate = useNavigate();
 
     const goToDetails = (navigate) => { navigate(`/details/${pokeElement.id}`) }

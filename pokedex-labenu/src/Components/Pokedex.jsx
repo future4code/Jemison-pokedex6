@@ -8,6 +8,7 @@ import GlobalContext from './../Context/GlobalContext';
 import logo from '../Styles/img/PokeLogo.png'
 import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 
+
 function Pokedex() {
     const context = useContext(GlobalContext)
     const navigate = useNavigate()

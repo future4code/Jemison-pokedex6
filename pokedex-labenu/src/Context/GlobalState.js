@@ -4,53 +4,12 @@ import axios from 'axios'
 
 const GlobalState = (props) => {
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [pokemonObj, setPokemonObj] = useState()
-    const [pokemonID, setPokemonID] = useState()
-    const [pokemonName, setPokemonName] = useState("")
-
-    const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartt') || '[]')
-
-    const [pokedex, setPokedex] = useState(cartFromLocalStorage)
-
-    const useRequestDetails = (url) => {
-        const getPokemon = () => {
-            setIsLoading(true)
-            axios.get(url)
-                .then((res) => {
-                    setIsLoading(false)
-                    setPokemonObj(res.data)
-                    setPokemonID(res.data.id)
-                    setPokemonName(res.data.name)
-                }).catch((error) => {
-                    console.log(error.res.data)
-                })
-        }
-        useEffect(() => {
-            console.count("useEffect renderizou!")
-            getPokemon()
-        }, [])
-
-        return { pokemonObj, isLoading, pokemonID, pokemonName }
-    }
-
-    const states = {
-        isLoading,
-        setIsLoading,
-        pokemonObj,
-        setPokemonObj,
-        pokemonID,
-        setPokemonID,
-        pokemonName,
-        setPokemonName,
-        useRequestDetails,
-
-        pokedex, 
-        setPokedex
-    }
-
+    // Estados aqui 
+    //As requisições aqui (TODAS) uma const para cada requisição
+    //const states = {passar os estados e a requisição(data)}
+    
     return (
-        <GlobalContext.Provider value={states}>
+        <GlobalContext.Provider value={{listPokemons,setListPokemons}}>
             {props.children}
         </GlobalContext.Provider>
     )
