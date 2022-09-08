@@ -166,7 +166,7 @@ export const Text = styled.div`
         color: white;
         text-align: center;
         padding-top: 0.8em;
-        text-shadow: -1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
+        text-shadow: 1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
     }
 `
 export const ButtonsHome = styled.div`
@@ -174,27 +174,70 @@ export const ButtonsHome = styled.div`
     width: 0 auto;
 `
 
-export const StatsBarDiv = styled.div`
+export const StatsBarContainer = styled.div`
     position: absolute;
     display: flex;
     align-items: center;
     width: 30em;
     height: 2em;
-    background-color: #AAA;
-    margin-left: 17em;
-    margin-top: 1.5em;
-    border-radius: 2em;
+    background: #163A41;
+    background: linear-gradient(to right, rgba(150,150,175,1), rgba(255,255,255,0.25));
+    margin-left: 6em;
+    margin-top: -2.4em;
+    border-radius: .7em;
+    box-shadow: 1px -1px 1px rgba(255,255,255,.1), -1px 2px 1px rgba(0,0,0,.5);
 `
-
-export const StatsBar = styled.div`
+export const StatsBarHP = styled.span`
     position: absolute;
     display: flex;
-    width: 15em;
+    width: ${props => props.width};
     height: 2em;
     background: #00D;
-    border-radius: 2em;
-    /* background: #FFFFFF; */
-    background: -moz-linear-gradient(top, #000000 0%, #184686 50%, #000000 100%);
-    background: -webkit-linear-gradient(top, #000000 0%, #184686 50%, #000000 100%);
-    background: linear-gradient(to bottom, #000000 0%, #184686 50%, #000000 100%);
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
+`
+export const StatsBarAtk = styled.span`
+    position: absolute;
+    display: flex;
+    width: ${props => props.width};
+    height: 2em;
+    background: #00D;
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
+`
+export const StatsBarDef = styled.span`
+    position: absolute;
+    display: flex;
+    width: ${props => props.width};
+    height: 2em;
+    background: #00D;
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
+`
+export const StatsBarSAtak = styled.span`
+    position: absolute;
+    display: flex;
+    width: ${props => props.width};
+    height: 2em;
+    background: #00D;
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
+`
+export const StatsBarSDef = styled.span`
+    position: absolute;
+    display: flex;
+    width: ${props => props.width};
+    height: 2em;
+    background: #00D;
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
+`
+export const StatsBarSpd = styled.span`
+    position: absolute;
+    display: flex;
+    width: ${props => props.width};
+    height: 2em;
+    background: #00D;
+    border-radius: .7em;
+    background: linear-gradient(to bottom, #000000 0%, #444 50%, #000000 100%);
 `
