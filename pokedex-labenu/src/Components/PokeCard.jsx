@@ -27,13 +27,13 @@ function PokeCard({ addPokemonToPokedex, nomePokemon, url }) {
             }).catch((error) => console.log(error.message))
     }, [])
 
-    const numberPokemon = () => {
-        if (pokemonID < 10) {
-            return (`#00${pokemonID}`)
-        } else if (pokemonID >= 10 && pokemonID < 100) {
-            return (`#0${pokemonID}`)
+    const numberPokemon = (numero) => {
+        if (numero < 10) {
+            return (`#00${numero}`)
+        } else if (numero >= 10 && numero < 100) {
+            return (`#0${numero}`)
         } else {
-            return (`#${pokemonID}`)
+            return (`#${numero}`)
         }
     }
     return (
@@ -49,5 +49,4 @@ function PokeCard({ addPokemonToPokedex, nomePokemon, url }) {
         </DivPai>
     )
 }
-
 export default PokeCard

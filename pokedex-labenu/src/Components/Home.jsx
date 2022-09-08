@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
+import { DivPai, CardsHome, BarHome, ButtonsHome, BarLogos } from '../Styles/StyleDetails'
+import GlobalContext from './../Context/GlobalContext';
 import PokeCard from './PokeCard';
+import logo from '../Styles/img/PokeLogo.png'
+import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 import axios from 'axios';
 import { DivPai, CardsHome, Bar, ButtonsHome } from '../Styles/StyleDetails'
 
 
 function Home() {
-
+    const context = useContext(GlobalContext)
     const navigate = useNavigate()
     
     const [Pokedex, SetPokedex] = useState([])
@@ -55,10 +59,12 @@ function Home() {
     }, [currentPage])
     return (
         <DivPai>
-            <Bar>
-                <h1>Home</h1>
-                <button onClick={() => goToPokedex(navigate)}>Pokedex</button>
-            </Bar>
+            <BarHome>
+                <BarLogos>
+                    <img src={logo} alt="pokemon_logo" />
+                    <img id="dex" onClick={() => goToPokedex(navigate)} src={pokedexLogo} alt="pokedex_logo" />
+                </BarLogos>
+            </BarHome>
             <CardsHome>
                 {pokemon}
             </CardsHome>
@@ -68,6 +74,5 @@ function Home() {
             </ButtonsHome>
         </DivPai>
     )
-
 }
 export default Home;

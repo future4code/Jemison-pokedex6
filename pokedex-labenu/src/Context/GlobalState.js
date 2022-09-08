@@ -1,4 +1,6 @@
-import GlobalContext from './Context/GlobalContext'
+import GlobalContext from './GlobalContext'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const GlobalState = (props) => {
 
