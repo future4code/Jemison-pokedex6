@@ -1,40 +1,68 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToHome } from './../Route/Coordinator';
 import CardPokedex from './CardPokedex';
-import {Buttons , FooterButton} from "../Styles/stylesCardPokedex"
-import {HeaderPokedex, HeanderButton,PokemonCard } from "../Styles/stylesPokedex"
+import { DivPai, BarPokedex, CardsHome, BarLogosPokedex, NoPokemons } from '../Styles/StyleDetails'
+import { PokedexVazia } from '../Styles/StylesNovo'
+import GlobalContext from './../Context/GlobalContext';
+import logo from '../Styles/img/PokeLogo.png'
+import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 
 function Pokedex() {
+    const context = useContext(GlobalContext)
     const navigate = useNavigate()
 
-    return (
-        <div>
-            <HeaderPokedex>
-                <HeanderButton>
-                <Buttons onClick={() => goToHome(navigate)}>Voltar para home</Buttons>
-                </HeanderButton>
-                <h1>Pokedex</h1>
+    useEffect(() => {
+        localStorage.setItem('cartt', JSON.stringify(context.pokedex))
+        console.count("renderizou")
+    }, [context.pokedex])
 
-            </HeaderPokedex>
+    const removePokemon = (pokemonToRemove) => {
+        const novaPokedex = [...context.pokedex]
+        const indexClickedPokemon = novaPokedex.indexOf(pokemonToRemove)
+        novaPokedex.splice(indexClickedPokemon, 1)
+        context.setPokedex(novaPokedex)
+    }
 
-            <PokemonCard>
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-                  {<CardPokedex/>}
-            </PokemonCard>
-            <FooterButton>
-                <Buttons>Avançar</Buttons>
-                <Buttons>Voltar</Buttons>
-            </FooterButton>
-        </div>
-    )
+    const cards = context.pokedex.map((pokeElement, index) => {
+        return (
+            <CardPokedex key={index} pokeElement={pokeElement} removePokemon={removePokemon} />
+        )
+    })
+
+    console.log(context.pokedex)
+
+    if (context.pokedex.length === 0) {
+        return (
+            <DivPai>
+                <BarPokedex>
+                    <BarLogosPokedex>
+                        <img onClick={() => goToHome(navigate)} src={logo} alt="pokemon_logo" />
+                        <img id="dex" src={pokedexLogo} alt="pokedex_logo" />
+                    </BarLogosPokedex>
+                </BarPokedex>
+                <PokedexVazia>
+                    <NoPokemons>
+                        <span>Sem Pokemons</span>
+                    </NoPokemons>
+                </PokedexVazia>
+            </DivPai>
+        )
+    } else {
+        return (
+            <DivPai>
+                <BarPokedex>
+                    <BarLogosPokedex>
+                        <img onClick={() => goToHome(navigate)} src={logo} alt="pokemon_logo" />
+                        <img id="dex" src={pokedexLogo} alt="pokedex_logo" />
+                    </BarLogosPokedex>
+                </BarPokedex>
+                <CardsHome>
+                    {cards}
+                </CardsHome>
+            </DivPai>
+        )
+    }
 }
 
 export default Pokedex

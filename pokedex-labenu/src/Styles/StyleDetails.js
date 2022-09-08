@@ -4,32 +4,70 @@ export const DivDetails = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #CCC;
+    background-color: #dee9e8;
     height: 100vh;
 `
 export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #CCC;
+    background-color: #dee9e8;
 `
-export const Bar = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+export const BarHome = styled.div`
     width: 100%;
-    background-color: #444;
-    padding: 3em 2em;
+    background-color: #a4bab7;
+    padding: 1em 2em;
+    box-shadow: 0px 5px 3px 0px rgba(48,58,43,0.5), inset 0px -4px 5px 0px rgba(242,247,247,0.5);
+`
 
-    h1 {
-        font-size: 3em;
-        color: white;
+export const BarLogos = styled.div`
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 56%;
+        margin: 0 80em;
+    
+    img {
+        width: 25em;
     }
-
-    button {
-        height: 2em;
+    #dex {
+        cursor: pointer;
+        width: 8em;
+        height: 7em;
     }
 `
+export const BarLogosPokedex = styled.div`
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 56%;
+    img {
+        cursor: pointer;
+        width: 15em;
+    }
+    #dex {
+        cursor: pointer;
+        width: 14em;
+        height: 12em;
+    }
+`
+export const BarPokedex = styled.div`
+    width: 100%;
+    background-color: #a4bab7;
+    padding: 1em 2em;
+    box-shadow: 0px 5px 3px 0px rgba(48,58,43,0.5), inset 0px -4px 5px 0px rgba(242,247,247,0.5);
+`
+
+export const NoPokemons = styled.div`
+    text-align: center;
+    padding: 16%;
+    span {
+        
+        font-family: 'Cabin';
+        font-size: 20em;
+    }
+`
+
 export const HeroContent = styled.div`
     display: grid;
     width: 60vw;
