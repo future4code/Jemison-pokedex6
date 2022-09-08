@@ -9,7 +9,7 @@ const GlobalState = (props) => {
     const [pokemonID, setPokemonID] = useState()
     const [pokemonName, setPokemonName] = useState("")
 
-    const [copiaCarta, setCopiaCarta] = useState()
+    const [pokedex, setPokedex] = useState([])
 
     const useRequestDetails = (url) => {
         const getPokemon = () => {
@@ -43,8 +43,8 @@ const GlobalState = (props) => {
         setPokemonName,
         useRequestDetails,
 
-        copiaCarta, 
-        setCopiaCarta
+        pokedex, 
+        setPokedex
     }
 
     return (
