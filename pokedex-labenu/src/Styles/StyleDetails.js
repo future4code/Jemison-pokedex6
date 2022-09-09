@@ -11,7 +11,9 @@ export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #dee9e8;
+    /* background-color: #dee9e8; */
+    position: relative;
+    padding-bottom: 2em;
 `
 export const BarHome = styled.div`
     width: 100%;
@@ -146,7 +148,6 @@ export const Text = styled.div`
         font-size: 2em;
     }
 `
-
 export const NomePokemon = styled.p`
     color: #222;
     font-size: 2.5em;
@@ -154,13 +155,56 @@ export const NomePokemon = styled.p`
 `
 
 export const Card = styled.div`
+    width: 40em;
+    height: auto;
+`
+
+export const NomePokemon2 = styled.p`
+    text-align: center;
+    color: #222;
+    width: 5em;
+    font-size: 2.5em;
+    border: 1px solid black;
+`
+
+export const TypeBackground2 = styled.div`
+    border: 2px solid red;
+    background-image: url('https://imgur.com/vtpP3Ke.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 45em;
+    height: 25em;
+    padding-top: 20%;
+    padding-bottom: 10%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    width: 35em;
-    height: 25em;
+
+    #icone{
+        margin-left: -28em;
+        width: 7em;
+    }
+`
+
+export const BotaoCapturar = styled.div `
+    border: 1px solid black;
+    width: 20em;
+    transform: translate(-4em, -8em)
+`
+export const Image = styled.img`
+    width: 12em;
+`
+
+export const ImageCard = styled.img`
+    width: 10em;
+    transform: translate(13em, -10em)
+`
+
+export const Infos = styled.div`
+    display: flex;
+    flex-direction:column;
+    transform: translate(-4em, 0)
 `
 
 export const CardsHome = styled.div`
@@ -168,14 +212,12 @@ export const CardsHome = styled.div`
     justify-items: center;
     align-items: center;
     margin: 4em auto;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(4, 30em);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5, 30em);
     grid-column-gap: 3em;
 `
 
-export const Image = styled.img`
-    width: 12em;
-`
+
 
 export const ButtonsHome = styled.div`
     display: flex;
@@ -201,7 +243,7 @@ export const Fundo = styled.div`
 `
 
 export const TypeBackground = styled.div`
-    background-image: url('https://imgur.com/xkwLtx1.png');
+    background-image: url('https://imgur.com/meJXm0j.png');
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 50%;
@@ -214,5 +256,3 @@ export const TypeBackground = styled.div`
         margin-bottom: 100px;
     }
 `
-
-

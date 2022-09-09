@@ -17,24 +17,26 @@ import rock from '../Styles/img/icons/Rock_icon.png'
 import steel from '../Styles/img/icons/Steel_icon.png'
 import water from '../Styles/img/icons/Water_icon.png'
 
-import bugBG from '../Styles/img/backgrounds/Bug_BG.png'
-import darkBG from '../Styles/img/backgrounds/Dark_BG.png'
-import dragonBG from '../Styles/img/backgrounds/Dragon_BG.png'
-import electricBG from '../Styles/img/backgrounds/Electric_BG.png'
-import fairyBG from '../Styles/img/backgrounds/Fairy_BG.png'
-import fightingBG from '../Styles/img/backgrounds/Fighting_BG.png'
-import fireBG from '../Styles/img/backgrounds/Fire_BG.png'
-import flyingBG from '../Styles/img/backgrounds/Flying_BG.png'
-import ghostBG from '../Styles/img/backgrounds/Ghost_BG.png'
-import grassBG from '../Styles/img/backgrounds/Grass_BG.png'
-import groundBG from '../Styles/img/backgrounds/Ground_BG.png'
-import iceBG from '../Styles/img/backgrounds/Ice_BG.png'
-import normalBG from '../Styles/img/backgrounds/Normal_BG.png'
-import poisonBG from '../Styles/img/backgrounds/Poison_BG.png'
-import psychicBG from '../Styles/img/backgrounds/Psychic_BG.png'
-import rockBG from '../Styles/img/backgrounds/Rock_BG.png'
-import steelBG from '../Styles/img/backgrounds/Steel_BG.png'
-import waterBG from '../Styles/img/backgrounds/Water_BG.png'
+import bugBG from '../Styles/img/backgrounds1/Bug_BG.png'
+import darkBG from '../Styles/img/backgrounds1/Dark_BG.png'
+import dragonBG from '../Styles/img/backgrounds1/Dragon_BG.png'
+import electricBG from '../Styles/img/backgrounds1/Electric_BG.png'
+import fairyBG from '../Styles/img/backgrounds1/Fairy_BG.png'
+import fightingBG from '../Styles/img/backgrounds1/Fighting_BG.png'
+import fireBG from '../Styles/img/backgrounds1/Fire_BG.png'
+import flyingBG from '../Styles/img/backgrounds1/Flying_BG.png'
+import ghostBG from '../Styles/img/backgrounds1/Ghost_BG.png'
+import grassBG from '../Styles/img/backgrounds1/Grass_BG.png'
+import groundBG from '../Styles/img/backgrounds1/Ground_BG.png'
+import iceBG from '../Styles/img/backgrounds1/Ice_BG.png'
+import normalBG from '../Styles/img/backgrounds1/Normal_BG.png'
+import poisonBG from '../Styles/img/backgrounds1/Poison_BG.png'
+import psychicBG from '../Styles/img/backgrounds1/Psychic_BG.png'
+import rockBG from '../Styles/img/backgrounds1/Rock_BG.png'
+import steelBG from '../Styles/img/backgrounds1/Steel_BG.png'
+import waterBG from '../Styles/img/backgrounds1/Water_BG.png'
+
+import grassCardBG from '../Styles/img/cardBG/grassHomeBG.png'
 
 export const useColors = (firstType, secondType) => {
 
@@ -166,6 +168,14 @@ export const useColors = (firstType, secondType) => {
         break;
     }
   }
+  const backgroundCards = () => {
+    switch (firstType) {
+      case 'grass':
+        return grassBG
+      default:
+        break;
+    }
+  }
 
-  return [pokemonType, pokemonType2, backgroundImage]
+  return [pokemonType, pokemonType2, backgroundImage, backgroundCards]
 }
