@@ -38,8 +38,8 @@ function Home() {
 
     const addPokemonPokedex = (pokemon) => {
         context.setPokedex([...context.pokedex, pokemon])
-        // const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
-        // setListPokemons(newList)
+        const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
+        setListPokemons(newList)
     }
 
     const spreadListPokemons = [...listPokemons]
