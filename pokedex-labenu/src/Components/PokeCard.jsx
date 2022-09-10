@@ -26,6 +26,7 @@ function PokeCard({ nomePokemon, url, addPokemonToPokedex }) {
                 setPokemonID(res.data.id)
             }).catch((error) => console.log(error.message))
     }, [])
+    console.log(pokemonCard)
 
     const numberPokemon = (numero) => {
         if (numero < 10) {
