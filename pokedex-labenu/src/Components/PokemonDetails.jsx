@@ -7,6 +7,7 @@ import actionButton1 from '../Styles/img/ActionButton1.png'
 import { useColors } from '../Hooks/useColors';
 import { BASE_URL } from '../Constants/Url';
 import { goBack } from '../Route/Coordinator';
+import catchItBtn from '../Styles/img/Catchit.png'
 
 function PokemonDetails() {
     const context = useContext(GlobalContext)
@@ -47,9 +48,6 @@ function PokemonDetails() {
                     <BackButton>
                         <img onClick={() => goBack(navigate)} src={arrow} alt="back_arrow" />
                     </BackButton>
-                    <ActionButton>
-                        <img src={actionButton1} alt="release_button" />
-                    </ActionButton>
                     <NomePokemon>
                         <h1>{`${capitalizeFirstLetter(context.pokemonName)}`}</h1>
                         <p>{`${numberPokemon(context.pokemonID)}`}</p>

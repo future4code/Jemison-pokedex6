@@ -11,11 +11,15 @@ export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #dee9e8;
+    /* background-color: #dee9e8; */
+    position: relative;
+    /* padding-bottom: 2em; */
+    
 `
 export const BarHome = styled.div`
     width: 100%;
     background-color: #a4bab7;
+    margin-bottom: 4em;
     padding: 1em 2em;
     box-shadow: 0px 5px 3px 0px rgba(48,58,43,0.5), inset 0px -4px 5px 0px rgba(242,247,247,0.5);
 `
@@ -146,7 +150,6 @@ export const Text = styled.div`
         font-size: 2em;
     }
 `
-
 export const NomePokemon = styled.p`
     color: #222;
     font-size: 2.5em;
@@ -154,27 +157,108 @@ export const NomePokemon = styled.p`
 `
 
 export const Card = styled.div`
+    width: 40em;
+    height: auto;
+`
+
+export const NamePokemon = styled.p`
+    
+    text-align: center;
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: bold;
+    font-size: 4.75em;
+    color: white;
+    padding-bottom: .2em;
+    text-shadow: 1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
+    transform: translate(0, -0.4em)
+`
+
+export const NumberPokemon = styled.div`
+    text-align: center;
+    color: #242424;
+    font-family: 'Cabin';
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 1px -1px 1px rgba(255,255,255,.1), -1px 1px 1px rgba(0,0,0,.5);
+    font-size: 2.75em;
+    transform: translate(0, -.8em)
+`
+
+export const ImgCatch = styled.img`
+    cursor: pointer;
+    position: absolute;
+    width: 6.5em;
+    transform: translate(-1.75em, -1.75em);
+    filter: drop-shadow(-3px 3px 1px rgba(0,0,0,.5));
+`
+
+export const ImgInfo = styled.img`
+    cursor: pointer;
+    position: absolute;
+    width: 5.5em;
+    transform: translate(5em, 0);
+    filter: drop-shadow(-2px 2px 1px rgba(0,0,0,.5));
+`
+export const ImgRelease = styled.img`
+    cursor: pointer;
+    position: absolute;
+    width: 9em;
+    transform: translate(-5em, 0);
+    filter: drop-shadow(-2px 2px 1px rgba(0,0,0,.5));
+`
+
+export const TypeBackground2 = styled.div`
+    background-image: url(${(props) => props.backgroundCards});
+    background-repeat: no-repeat;
+    background-attachment: local;
+    background-size: contain;
+    background-position: 50% 50%;
+    width: 42em;
+    height: 25em;
+    padding-top: 20%;
+    padding-bottom: 10%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    width: 35em;
-    height: 25em;
+    filter: drop-shadow(-4px 8px 1px rgba(0,0,0,.5));
+
+    #icone{
+        transform: translate(-14em, -4em);
+        width: 9em;
+        filter: drop-shadow(-3px 3px 1px rgba(0,0,0,.5));
+    }
+`
+
+
+
+export const BotaoCapturar = styled.div`
+    transform: translate(-5em, -7.5em)
+`
+export const Image = styled.img`
+    width: 12em;
+`
+
+export const ImageCard = styled.img`
+    position: absolute;
+    width: 13em;
+    transform: translate(13em, -3em)
+`
+
+export const Infos = styled.div`
+    display: flex;
+    flex-direction:column;
+    transform: translate(-4em, 0)
 `
 
 export const CardsHome = styled.div`
     display: grid;
     justify-items: center;
     align-items: center;
-    margin: 4em auto;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: repeat(4, 30em);
-    grid-column-gap: 3em;
-`
-
-export const Image = styled.img`
-    width: 12em;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4, 28em);
+    grid-column-gap: 5em;
 `
 
 export const ButtonsHome = styled.div`
@@ -201,7 +285,7 @@ export const Fundo = styled.div`
 `
 
 export const TypeBackground = styled.div`
-    background-image: url('https://imgur.com/xkwLtx1.png');
+    background-image: url('https://imgur.com/meJXm0j.png');
     background-repeat: no-repeat;
     background-position: center center;
     padding-top: 50%;
@@ -214,5 +298,3 @@ export const TypeBackground = styled.div`
         margin-bottom: 100px;
     }
 `
-
-

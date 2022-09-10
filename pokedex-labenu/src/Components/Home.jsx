@@ -6,52 +6,37 @@ import GlobalContext from './../Context/GlobalContext';
 import PokeCard from './PokeCard';
 import logo from '../Styles/img/PokeLogo.png'
 import pokedexLogo from '../Styles/img/Pokedex_logo.png'
+import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
 
 function Home() {
     const context = useContext(GlobalContext)
     const navigate = useNavigate()
-    
-    const [listPokemons, setListPokemons] = useState([])
-    const [nextPage, setNextPage] = useState("")
-    const [previousPage, setPreviousPage] = useState("")
-    const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20")
 
     const getListPokemons = () => {
-        axios.get(currentPage)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${context.pageChange}&limit=16`)
             .then((res) => {
-                setListPokemons(res.data.results)
-                setNextPage(res.data.next)
-                setPreviousPage(res.data.previous)
+                context.setListPokemons(res.data.results)
             })
             .catch((error) => console.log(error.message))
     }
 
-    const goToNext = () => {
-        setCurrentPage(nextPage)
-        return currentPage
-    }
-    const goToPrevious = () => {
-        setCurrentPage(previousPage)
-        return currentPage
-    }
-
-    const addPokemonPokedex = (pokemon) => {
-        context.setPokedex([...context.pokedex, pokemon])
-        const newList = listPokemons.filter(function(poke) { return pokemon.name != poke.name; });
-        setListPokemons(newList)
-    }
-
-    const spreadListPokemons = [...listPokemons]
+    const spreadListPokemons = [...context.listPokemons]
     const pokemons = spreadListPokemons.map((i) => {
         return (
-            <PokeCard addPokemonToPokedex={addPokemonPokedex} nomePokemon={i.name} key={i.name} url={i.url} />
+            <PokeCard nomePokemon={i.name} key={i.name} url={i.url} />
         )
     })
 
-    useEffect(() => {
+    const handleChange = (e, value) => {
+        context.setPage(value)
+        const jghc = (value - 1) * 30
+        context.setPageChange(jghc)
+      }
+
+      useEffect(() => {
         getListPokemons()
-    }, [currentPage])
+    }, [context.pageChange])
 
     return (
         <DivPai>
@@ -64,10 +49,18 @@ function Home() {
             <CardsHome>
                 {pokemons}
             </CardsHome>
-            <ButtonsHome>
-                <button onClick={() => { goToPrevious() }}>Previous</button>
-                <button onClick={() => { goToNext() }}>Next Page</button>
-            </ButtonsHome>
+            <p>current page is {context.page}</p>
+            <Pagination
+                count={22}
+                shape="circular"
+                color="secondary"
+                variant="text"
+                size="large"
+                page={context.page}
+                onChange={handleChange}
+                hideNextButton={true}
+                hidePrevButton={true}
+            />
         </DivPai>
     )
 }
