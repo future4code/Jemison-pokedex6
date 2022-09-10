@@ -185,6 +185,13 @@ export const NumberPokemon = styled.div`
     transform: translate(0, -.8em)
 `
 
+export const ContainerPagination = styled.div  `
+  width: 100%;
+  padding-bottom: 2em;
+  display: flex;
+  justify-content: center;
+`
+
 export const ImgCatch = styled.img`
     cursor: pointer;
     position: absolute;
@@ -209,13 +216,15 @@ export const ImgRelease = styled.img`
 `
 
 export const TypeBackground2 = styled.div`
-    background-image: url(${(props) => props.backgroundCards});
+    background: ${(props) => props.backgroundCards};
+    border-radius: 3em;
+    /* background-image: url(${(props) => props.backgroundCards});
     background-repeat: no-repeat;
     background-attachment: local;
     background-size: contain;
-    background-position: 50% 50%;
+    background-position: 50% 50%; */
     width: 42em;
-    height: 25em;
+    height: 22em;
     padding-top: 20%;
     padding-bottom: 10%;
     display: flex;
@@ -229,9 +238,12 @@ export const TypeBackground2 = styled.div`
         width: 9em;
         filter: drop-shadow(-3px 3px 1px rgba(0,0,0,.5));
     }
+
+    #wmball {
+        position: absolute;
+        transform: translate(-12em, 0)
+    }
 `
-
-
 
 export const BotaoCapturar = styled.div`
     transform: translate(-5em, -7.5em)

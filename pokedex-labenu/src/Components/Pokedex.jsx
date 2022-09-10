@@ -14,7 +14,6 @@ function Pokedex() {
 
     useEffect(() => {
         localStorage.setItem('cartt', JSON.stringify(context.pokedex))
-        console.count("renderizou")
     }, [context.pokedex])
 
     const removePokemon = (pokemonToRemove) => {
@@ -30,8 +29,7 @@ function Pokedex() {
         )
     })
 
-    console.log(context.pokedex)
-
+    
     if (context.pokedex.length === 0) {
         return (
             <DivPai>

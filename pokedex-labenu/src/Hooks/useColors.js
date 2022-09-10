@@ -206,7 +206,7 @@ export const useColors = (firstType, secondType) => {
       case 'ghost':
         return ghostCardBG
       case 'grass':
-        return grassCardBG
+        return 'linear-gradient(211.82deg, #25C24E 6.6%, #147B3F 68.55%, #0B4724 104.89%)'
       case 'ground':
         return groundCardBG
       case 'ice':

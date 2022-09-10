@@ -1,13 +1,11 @@
 import React, { useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { TypeBackground, Fundo, Stats, Title, Text, Info, Moves, Types, StatsText, NomePokemon, ImagesDiv, PhotoFront, PhotoBack, BackButton, ActionButton, StatsNumbers, StatsBarContainer, StatsBarHP, StatsBarAtk, StatsBarDef, StatsBarSAtak, StatsBarSDef, StatsBarSpd } from '../Styles/StylesNovo'
+import { TypeBackground, Fundo, Stats, Title, Text, Info, Moves, Types, StatsText, NomePokemon, ImagesDiv, PhotoFront, PhotoBack, BackButton, StatsNumbers, StatsBarContainer, StatsBarHP, StatsBarAtk, StatsBarDef, StatsBarSAtak, StatsBarSDef, StatsBarSpd } from '../Styles/StylesNovo'
 import GlobalContext from './../Context/GlobalContext';
 import arrow from '../Styles/img/Arrow.png'
-import actionButton1 from '../Styles/img/ActionButton1.png'
 import { useColors } from '../Hooks/useColors';
 import { BASE_URL } from '../Constants/Url';
 import { goBack } from '../Route/Coordinator';
-import catchItBtn from '../Styles/img/Catchit.png'
 
 function PokemonDetails() {
     const context = useContext(GlobalContext)

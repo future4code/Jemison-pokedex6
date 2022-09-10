@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { DivPai, NamePokemon, NumberPokemon, Card, ImageCard, ImgCatch, TypeBackground2, Infos, BotaoCapturar } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 import { useColors } from '../Hooks/useColors'
 import catchItBtn from '../Styles/img/Catchit.png'
+import pokeballWaterMark from '../Styles/img/Pokebola_watermark 1.png'
 import axios from 'axios';
 
 function PokeCard({ nomePokemon, url }) {
     const context = useContext(GlobalContext)
-    const navigate = useNavigate();
-    const goToDetails = (navigate) => { navigate(`details/${pokemonID}`) }
 
     const [isLoading, setIsLoading] = useState(false)
     const [pokemonCard, setPokemonCard] = useState({})
@@ -46,12 +44,16 @@ function PokeCard({ nomePokemon, url }) {
         context.setPokedex([...context.pokedex, pokemon])
         const newList = context.listPokemons.filter(function (poke) { return pokemon.name != poke.name; });
         context.setListPokemons(newList)
+        if (context.pokedex.length === 0) {
+            alert(`Pokemon capturado com sucesso! Encontre seus Pokemons clicando no ícone de Pokedex no canto direito da tela.`)
+        }
     }
 
     return (
         <DivPai >
             <Card>
                 <TypeBackground2 backgroundCards={backgroundCards()}>
+                    <img id="wmball" src={pokeballWaterMark} alt="waterMark_pokeball" />
                     <Infos>
                         <NamePokemon>
                             {`${capitalizeFirstLetter(nomePokemon)}`}
