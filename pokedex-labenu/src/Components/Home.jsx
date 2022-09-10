@@ -14,7 +14,7 @@ function Home() {
     const navigate = useNavigate()
 
     const getListPokemons = () => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${context.pageChange}&limit=24`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${context.pageChange}&limit=16`)
             .then((res) => {
                 context.setListPokemons(res.data.results)
             })
@@ -51,8 +51,8 @@ function Home() {
             </CardsHome>
             <p>current page is {context.page}</p>
             <Pagination
-                count={21}
-                shape="circle"
+                count={22}
+                shape="circular"
                 color="secondary"
                 variant="text"
                 size="large"

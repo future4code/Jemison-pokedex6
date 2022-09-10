@@ -24,14 +24,14 @@ export const NomePokemon = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    margin-top: -53em;
+    margin-top: -52em;
     text-align: center;
     
     h1{
         font-family: 'Cabin';
         font-style: italic;
         font-weight: bold;
-        font-size: 8em;
+        font-size: 11em;
         color: white;
         padding-bottom: .2em;
         text-shadow: 1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
@@ -39,7 +39,7 @@ export const NomePokemon = styled.div`
     }
     p{
         color: #242424;
-        font-size: 5em;
+        font-size: 6em;
         font-family: 'Cabin';
         font-style: italic;
         font-weight: 600;

@@ -36,7 +36,24 @@ import rockBG from '../Styles/img/backgrounds1/Rock_BG.png'
 import steelBG from '../Styles/img/backgrounds1/Steel_BG.png'
 import waterBG from '../Styles/img/backgrounds1/Water_BG.png'
 
-import grassCardBG from '../Styles/img/cardBG/grassHomeBG.png'
+import bugCardBG from '../Styles/img/cardBG/bugCardBG.png'
+import darkCardBG from '../Styles/img/cardBG/darkCardBG.png'
+import dragonCardBG from '../Styles/img/cardBG/dragonCardBG.png'
+import electricCardBG from '../Styles/img/cardBG/electricCardBG.png'
+import fairyCardBG from '../Styles/img/cardBG/fairyCardBG.png'
+import fightingCardBG from '../Styles/img/cardBG/fightingCardBG.png'
+import fireCardBG from '../Styles/img/cardBG/fireCardBG.png'
+import flyingCardBG from '../Styles/img/cardBG/flyingCardBG.png'
+import ghostCardBG from '../Styles/img/cardBG/ghostCardBG.png'
+import grassCardBG from '../Styles/img/cardBG/grassCardBG.png'
+import groundCardBG from '../Styles/img/cardBG/groundCardBG.png'
+import iceCardBG from '../Styles/img/cardBG/iceCardBG.png'
+import normalCardBG from '../Styles/img/cardBG/normalCardBG.png'
+import poisonCardBG from '../Styles/img/cardBG/poisonCardBG.png'
+import psychicCardBG from '../Styles/img/cardBG/psychicCardBG.png'
+import rockCardBG from '../Styles/img/cardBG/rockCardBG.png'
+import steelCardBG from '../Styles/img/cardBG/steelCardBG.png'
+import waterCardBG from '../Styles/img/cardBG/waterCardBG.png'
 
 export const useColors = (firstType, secondType) => {
 
@@ -170,8 +187,42 @@ export const useColors = (firstType, secondType) => {
   }
   const backgroundCards = () => {
     switch (firstType) {
+      case 'bug':
+        return bugCardBG
+      case 'dark':
+        return darkCardBG
+      case 'dragon':
+        return dragonCardBG
+      case 'electric':
+        return electricCardBG
+      case 'fairy':
+        return fairyCardBG
+      case 'fighting':
+        return fightingCardBG
+      case 'fire':
+        return fireCardBG
+      case 'flying':
+        return flyingCardBG
+      case 'ghost':
+        return ghostCardBG
       case 'grass':
-        return grassBG
+        return grassCardBG
+      case 'ground':
+        return groundCardBG
+      case 'ice':
+        return iceCardBG
+      case 'normal':
+        return normalCardBG
+      case 'poison':
+        return poisonCardBG
+      case 'psychic':
+        return psychicCardBG
+      case 'rock':
+        return rockCardBG
+      case 'steel':
+        return steelCardBG
+      case 'water':
+        return waterCardBG
       default:
         break;
     }

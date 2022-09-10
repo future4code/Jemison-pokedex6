@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { DivPai, NomePokemon2, Card, ImageCard, CardSpace, TypeBackground2, Infos, BotaoCapturar } from '../Styles/StyleDetails'
+import { DivPai, NamePokemon, NumberPokemon, Card, ImageCard, ImgCatch, TypeBackground2, Infos, BotaoCapturar } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
-import { useColors } from '../Hooks/useColors';
+import { useColors } from '../Hooks/useColors'
+import catchItBtn from '../Styles/img/Catchit.png'
 import axios from 'axios';
 
 function PokeCard({ nomePokemon, url }) {
@@ -15,7 +16,7 @@ function PokeCard({ nomePokemon, url }) {
     const [pokemonID, setPokemonID] = useState()
 
     const pokeSpritesAnim = pokemonCard && pokemonCard.sprites && pokemonCard.sprites.versions['generation-v']['black-white'].animated
-    const [pokemonType, backgroundImage] = useColors(!context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[0].type.name)
+    const [pokemonType, pokemonType2, backgroundImage, backgroundCards] = useColors(!context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[0].type.name, !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1]?.type.name ? !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1].type.name : null);
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -50,19 +51,19 @@ function PokeCard({ nomePokemon, url }) {
     return (
         <DivPai >
             <Card>
-                <TypeBackground2 backgroundImage={backgroundImage()}>
+                <TypeBackground2 backgroundCards={backgroundCards()}>
                     <Infos>
-                        <NomePokemon2>
+                        <NamePokemon>
                             {`${capitalizeFirstLetter(nomePokemon)}`}
-                        </NomePokemon2>
-                        <NomePokemon2>
+                        </NamePokemon>
+                        <NumberPokemon>
                             {`${numberPokemon(pokemonID)}`}
-                        </NomePokemon2>
+                        </NumberPokemon>
                     </Infos>
                     <img id="icone" src={pokemonType()} alt="grass_icon" />
-                    {/* {!isLoading && pokeSpritesAnim && <ImageCard src={pokeSpritesAnim.front_default} alt={`${pokemonCard.name}_front_image`} />} */}
+                    {!isLoading && pokeSpritesAnim && <ImageCard src={pokeSpritesAnim.front_default} alt={`${pokemonCard.name}_front_image`} />}
                     <BotaoCapturar>
-                        <button onClick={() => addPokemonPokedex(pokemonCard)}>Capturar</button>
+                        <ImgCatch onClick={() => addPokemonPokedex(pokemonCard)} src={catchItBtn} alt="catch_button" />
                     </BotaoCapturar>
                 </TypeBackground2>
             </Card>
