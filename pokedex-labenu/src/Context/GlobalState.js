@@ -12,6 +12,9 @@ const GlobalState = (props) => {
     const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartt') || '[]')
 
     const [pokedex, setPokedex] = useState(cartFromLocalStorage)
+    const [listPokemons, setListPokemons] = useState([])
+    const [page, setPage] = useState(1)
+    const [pageChange, setPageChange] = useState(0)
 
     const useRequestDetails = (url) => {
         const getPokemon = () => {
@@ -23,13 +26,12 @@ const GlobalState = (props) => {
                     setPokemonID(res.data.id)
                     setPokemonName(res.data.name)
                 }).catch((error) => {
-                    console.log(error.res.data)
+                    console.error(error.res.data)
                 })
         }
         useEffect(() => {
-            console.count("useEffect renderizou!")
             getPokemon()
-        }, [])
+        },[])
 
         return { pokemonObj, isLoading, pokemonID, pokemonName }
     }
@@ -46,7 +48,13 @@ const GlobalState = (props) => {
         useRequestDetails,
 
         pokedex, 
-        setPokedex
+        setPokedex,
+        listPokemons, 
+        setListPokemons,
+        page, 
+        setPage,
+        pageChange, 
+        setPageChange
     }
 
     return (

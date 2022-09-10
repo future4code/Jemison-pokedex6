@@ -30,7 +30,7 @@ function Pokedex() {
         )
     })
 
-    console.log(context.pokedex)
+    
 
     if (context.pokedex.length === 0) {
         return (

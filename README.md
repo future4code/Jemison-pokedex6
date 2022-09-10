@@ -1,16 +1,18 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Juan Carlos Torterolo Pedroza
+- Jennifer Perucci de Almeida
+- Cristiane de Lima Borges
 
-Link do Surge: www.link.com.br
+Link do Surge: happypotter-pokedex-final.surge.sh
 
 O que funciona:
-- Item 1
-- Item 2
+- Paginação
+- Cartas individuais de cada pokemon
+- Sistema de captura com integração na página Pokedex
+- Página de detalhes com informações e estilização personalizada para cada Pokemon.
 
 O que não funciona: 
-- Item 3
-- Item 4
+- Após entrar e sair da página Pokedex, o Pokemon capturado volta à lista com todos os outros.
+- Design não responsivo.
