@@ -16,7 +16,8 @@ function Home() {
     const getListPokemons = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${context.pageChange}&limit=16`)
             .then((res) => {
-                context.setListPokemons(res.data.results)
+                const uncaughtPokemons = res.data.results.filter(result => !context.pokedex.map(pokemon => pokemon.name).includes(result.name));
+                context.setListPokemons(uncaughtPokemons);
             })
             .catch((error) => console.error(error.message))
     }

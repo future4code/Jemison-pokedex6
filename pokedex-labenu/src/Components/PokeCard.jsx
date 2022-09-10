@@ -45,7 +45,7 @@ function PokeCard({ nomePokemon, url }) {
 
     const addPokemonPokedex = (pokemon) => {
         context.setPokedex([...context.pokedex, pokemon])
-        const newList = context.listPokemons.filter(function (poke) { return pokemon.name != poke.name; });
+        const newList = context.listPokemons.filter(function (poke) { return pokemon.name !== poke.name; });
         context.setListPokemons(newList)
     }
 
