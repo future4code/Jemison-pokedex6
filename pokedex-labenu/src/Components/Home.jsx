@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
-import { DivPai, CardsHome, BarHome, BarLogos, ContainerPagination } from '../Styles/StyleDetails'
+import { DivPai, CardsHome, BarHome, BarLogos, ContainerPagination, NoPokemonsHome, HeroContent } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 import PokeCard from './PokeCard';
 import logo from '../Styles/img/PokeLogo.png'
+import pikachuBG from '../Styles/img/Pikachu_BG.jpg'
 import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
@@ -16,10 +17,10 @@ function Home() {
     const getListPokemons = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${context.pageChange}&limit=16`)
             .then((res) => {
-                context.setListPokemons(res.data.results)
+                const uncaughtPokemons = res.data.results.filter(result => !context.pokedex.map(pokemon => pokemon.name).includes(result.name));
+                context.setListPokemons(uncaughtPokemons);
             })
             .catch((error) => console.error(error.message))
-
     }
 
     const spreadListPokemons = [...context.listPokemons]
@@ -39,7 +40,6 @@ function Home() {
         getListPokemons()
     }, [context.pageChange])
 
-
     if (context.listPokemons.length === 0) {
         return (
             <DivPai>
@@ -49,15 +49,17 @@ function Home() {
                         <img id="dex" onClick={() => goToPokedex(navigate)} src={pokedexLogo} alt="pokedex_logo" />
                     </BarLogos>
                 </BarHome>
-                <CardsHome>
-                    <h1>haphvapshvashvpaishv</h1>
-                </CardsHome>
+                <HeroContent pikachuBG={pikachuBG}>
+                    <NoPokemonsHome>
+                        <p id="pokecap">Todos os Pokemóns desta página foram capturados.</p>
+                        <p id="prof">O Professor Carvalho ficaria orgulhoso de você!</p >
+                    </NoPokemonsHome>
+                </HeroContent>
                 <ContainerPagination>
                     <Pagination
-                        count={22}
+                        count={40}
                         shape="circular"
-                        color="secondary"
-                        variant="text"
+                        color="primary"
                         size="large"
                         page={context.page}
                         onChange={handleChange}
@@ -83,8 +85,7 @@ function Home() {
                     <Pagination
                         count={40}
                         shape="circular"
-                        color="secondary"
-                        variant="text"
+                        color="primary"
                         size="large"
                         page={context.page}
                         onChange={handleChange}

@@ -11,15 +11,23 @@ export const DivPai = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-color: #dee9e8; */
+    background-color: #dee9e8;
     position: relative;
     /* padding-bottom: 2em; */
-    
+`
+export const DivPaiPokedex = styled.div`
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dee9e8;
+    position: relative;
+    padding-bottom: 2em;
 `
 export const BarHome = styled.div`
     width: 100%;
     background-color: #a4bab7;
-    margin-bottom: 4em;
+    margin-bottom: 2em;
     padding: 1em 2em;
     box-shadow: 0px 5px 3px 0px rgba(48,58,43,0.5), inset 0px -4px 5px 0px rgba(242,247,247,0.5);
 `
@@ -66,20 +74,23 @@ export const NoPokemons = styled.div`
     text-align: center;
     padding: 16%;
     span {
-        
         font-family: 'Cabin';
+        font-weight: 700;
         font-size: 20em;
+        width: 35%;
+        margin-bottom: 1em;
+        text-shadow: 2px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
     }
 `
 
 export const HeroContent = styled.div`
-    display: grid;
-    width: 60vw;
-    grid-row-gap: 3em;
-    grid-column-gap: 3em;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(auto-fit, 1fr);
-    margin: 7em auto;
+    width: 100%;
+    height: 100vh;
+    margin-top: -1.9em;
+    background-image: url(${(props) => props.pikachuBG});
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0px 4px 4px 0px rgba(48,58,43,0.5);
 `
 export const PhotoFront = styled.div`
     justify-self: center;
@@ -175,21 +186,27 @@ export const NamePokemon = styled.p`
 `
 
 export const NumberPokemon = styled.div`
+    color: transparent;
+    background: #000;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: -1px 1px 1px rgba(255,255,255,.3);
     text-align: center;
-    color: #242424;
     font-family: 'Cabin';
     font-style: italic;
     font-weight: 600;
-    text-shadow: 1px -1px 1px rgba(255,255,255,.1), -1px 1px 1px rgba(0,0,0,.5);
-    font-size: 2.75em;
+    font-size: 2.85em;
     transform: translate(0, -.8em)
 `
 
 export const ContainerPagination = styled.div  `
   width: 100%;
   padding-bottom: 2em;
+  padding-top: 2em;
   display: flex;
   justify-content: center;
+  box-shadow: 0px -5px 5px 0px rgba(48,58,43,0.2), inset 0px 4px 5px 0px rgba(242,247,247,0.75);
 `
 
 export const ImgCatch = styled.img`
@@ -217,12 +234,8 @@ export const ImgRelease = styled.img`
 
 export const TypeBackground2 = styled.div`
     background: ${(props) => props.backgroundCards};
+    border: 0.5em ridge ${(props) => props.backgroundBorder};
     border-radius: 3em;
-    /* background-image: url(${(props) => props.backgroundCards});
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-size: contain;
-    background-position: 50% 50%; */
     width: 42em;
     height: 22em;
     padding-top: 20%;
@@ -242,6 +255,33 @@ export const TypeBackground2 = styled.div`
     #wmball {
         position: absolute;
         transform: translate(-12em, 0)
+    }
+`
+
+export const NoPokemonsHome = styled.div`
+    text-align: center;
+    padding: 16%;
+
+    #prof {
+        position: absolute;
+        display:block;
+        font-family: 'Cabin';
+        font-size: 7em;
+        width: 35%;
+        margin-bottom: 1em;
+        text-shadow: 1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
+        transform: translate(-2em, 5em)
+    }
+    #pokecap {
+        position: absolute;
+        display:block;
+        font-family: 'Cabin';
+        font-size: 7em;
+        color: white;
+        width: 35%;
+        margin-bottom: 1em;
+        text-shadow: 1px -1px 1px rgba(255,255,255,.1), -2px 2px 1px rgba(0,0,0,.5);
+        transform: translate(5em, -2em)
     }
 `
 

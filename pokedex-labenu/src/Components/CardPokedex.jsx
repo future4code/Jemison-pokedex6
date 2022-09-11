@@ -13,7 +13,7 @@ function CardPokedex({ pokeElement, removePokemon }) {
     const goToDetails = (navigate) => { navigate(`/details/${pokeElement.id}`) }
 
     const pokeSpritesAnim = pokeElement && pokeElement.sprites && pokeElement.sprites.versions['generation-v']['black-white'].animated
-    const [pokemonType, pokemonType2, backgroundImage, backgroundCards] = useColors(!context.isLoading && pokeElement && pokeElement.types && pokeElement.types[0].type.name, !context.isLoading && pokeElement && pokeElement.types && pokeElement.types[1]?.type.name ? !context.isLoading && pokeElement && pokeElement.types && pokeElement.types[1].type.name : null);
+    const [pokemonType, pokemonType2, backgroundImage, backgroundCards, backgroundBorder] = useColors(!context.isLoading && pokeElement && pokeElement.types && pokeElement.types[0].type.name, !context.isLoading && pokeElement && pokeElement.types && pokeElement.types[1]?.type.name ? !context.isLoading && pokeElement && pokeElement.types && pokeElement.types[1].type.name : null);
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -32,7 +32,7 @@ function CardPokedex({ pokeElement, removePokemon }) {
     return (
         <DivPai>
             <Card>
-                <TypeBackground2 backgroundCards={backgroundCards()}>
+                <TypeBackground2 backgroundCards={backgroundCards()} backgroundBorder={backgroundBorder()}>
                     <Infos>
                         <NamePokemon>
                             {`${capitalizeFirstLetter(pokeElement.name)}`}

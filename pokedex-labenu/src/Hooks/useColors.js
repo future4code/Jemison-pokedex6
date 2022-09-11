@@ -36,25 +36,6 @@ import rockBG from '../Styles/img/backgrounds1/Rock_BG.png'
 import steelBG from '../Styles/img/backgrounds1/Steel_BG.png'
 import waterBG from '../Styles/img/backgrounds1/Water_BG.png'
 
-import bugCardBG from '../Styles/img/cardBG/bugCardBG.png'
-import darkCardBG from '../Styles/img/cardBG/darkCardBG.png'
-import dragonCardBG from '../Styles/img/cardBG/dragonCardBG.png'
-import electricCardBG from '../Styles/img/cardBG/electricCardBG.png'
-import fairyCardBG from '../Styles/img/cardBG/fairyCardBG.png'
-import fightingCardBG from '../Styles/img/cardBG/fightingCardBG.png'
-import fireCardBG from '../Styles/img/cardBG/fireCardBG.png'
-import flyingCardBG from '../Styles/img/cardBG/flyingCardBG.png'
-import ghostCardBG from '../Styles/img/cardBG/ghostCardBG.png'
-import grassCardBG from '../Styles/img/cardBG/grassCardBG.png'
-import groundCardBG from '../Styles/img/cardBG/groundCardBG.png'
-import iceCardBG from '../Styles/img/cardBG/iceCardBG.png'
-import normalCardBG from '../Styles/img/cardBG/normalCardBG.png'
-import poisonCardBG from '../Styles/img/cardBG/poisonCardBG.png'
-import psychicCardBG from '../Styles/img/cardBG/psychicCardBG.png'
-import rockCardBG from '../Styles/img/cardBG/rockCardBG.png'
-import steelCardBG from '../Styles/img/cardBG/steelCardBG.png'
-import waterCardBG from '../Styles/img/cardBG/waterCardBG.png'
-
 export const useColors = (firstType, secondType) => {
 
   const pokemonType = () => {
@@ -185,48 +166,90 @@ export const useColors = (firstType, secondType) => {
         break;
     }
   }
-  const backgroundCards = () => {
+  const backgroundGradient = () => {
     switch (firstType) {
       case 'bug':
-        return bugCardBG
+        return 'linear-gradient(124.43deg, #59993B 3.03%, #0E4819 59.71%, #061501 99.96%)'
       case 'dark':
-        return darkCardBG
+        return 'linear-gradient(124.43deg, #606B74 3.03%, #17272C 59.71%, #010402 99.96%)'
       case 'dragon':
-        return dragonCardBG
+        return 'linear-gradient(124.43deg, #7895FC 3.03%, #246670 59.71%, #0A0B0B 99.96%)'
       case 'electric':
-        return electricCardBG
+        return 'linear-gradient(124.43deg, #F4E2B6 3.03%, #CC971A 59.71%, #7B2003 99.96%)'
       case 'fairy':
-        return fairyCardBG
+        return 'linear-gradient(124.43deg, #F347F3 3.03%, #DC2A89 59.71%, #761962 99.96%)'
       case 'fighting':
-        return fightingCardBG
+        return 'linear-gradient(124.43deg, #FA7E56 3.03%, #B64C2A 59.71%, #67140E 99.96%)'
       case 'fire':
-        return fireCardBG
+        return 'linear-gradient(124.43deg, #FF5C38 3.03%, #C52E24 59.71%, #692011 99.96%)'
       case 'flying':
-        return flyingCardBG
+        return 'linear-gradient(124.43deg, #B9DAF0 3.03%, #537B98 59.71%, #1A2227 99.96%)'
       case 'ghost':
-        return ghostCardBG
+        return 'linear-gradient(124.43deg, #886595 3.03%, #462F77 59.71%, #0C233F 99.96%)'
       case 'grass':
-        return 'linear-gradient(211.82deg, #25C24E 6.6%, #147B3F 68.55%, #0B4724 104.89%)'
+        return 'linear-gradient(124.43deg, #25C24E 3.03%, #147B3F 59.71%, #0B4724 99.96%)'
       case 'ground':
-        return groundCardBG
+        return 'linear-gradient(124.43deg, #CE9527 3.03%, #8D5A1F 59.71%, #4E240C 99.96%)'
       case 'ice':
-        return iceCardBG
+        return 'linear-gradient(124.43deg, #D2F4FF 3.03%, #51B5D6 59.71%, #237A97 99.96%)'
       case 'normal':
-        return normalCardBG
+        return 'linear-gradient(124.43deg, #DAD3D5 3.03%, #565354 59.71%, #352C27 99.96%)'
       case 'poison':
-        return poisonCardBG
+        return 'linear-gradient(124.43deg, #BF8CFF 3.03%, #8B43A4 59.71%, #50197E 99.96%)'
       case 'psychic':
-        return psychicCardBG
+        return 'linear-gradient(124.43deg, #EA1369 3.03%, #A11243 59.71%, #4F070B 99.96%)'
       case 'rock':
-        return rockCardBG
+        return 'linear-gradient(124.43deg, #EBA844 3.03%, #9A4D21 59.71%, #621400 99.96%)'
       case 'steel':
-        return steelCardBG
+        return 'linear-gradient(124.43deg, #A7DCE3 3.03%, #59B6AB 59.71%, #29525B 99.96%)'
       case 'water':
-        return waterCardBG
+        return 'linear-gradient(124.43deg, #52CAF0 3.03%, #2E5BC5 59.71%, #0D2458 99.96%)'
+      default:
+        break;
+    }
+  }
+  const backgroundBorder = () => {
+    switch (firstType) {
+      case 'bug':
+        return '#0E4819'
+      case 'dark':
+        return '#17272C'
+      case 'dragon':
+        return '#246670'
+      case 'electric':
+        return '#CC971A'
+      case 'fairy':
+        return '#DC2A89'
+      case 'fighting':
+        return '#B64C2A'
+      case 'fire':
+        return '#C52E24'
+      case 'flying':
+        return '#537B98'
+      case 'ghost':
+        return '#462F77'
+      case 'grass':
+        return '#147B3F'
+      case 'ground':
+        return '#8D5A1F'
+      case 'ice':
+        return '#51B5D6'
+      case 'normal':
+        return '#565354'
+      case 'poison':
+        return '#8B43A4'
+      case 'psychic':
+        return '#A11243'
+      case 'rock':
+        return '#9A4D21'
+      case 'steel':
+        return '#59B6AB'
+      case 'water':
+        return '#2E5BC5'
       default:
         break;
     }
   }
 
-  return [pokemonType, pokemonType2, backgroundImage, backgroundCards]
+  return [pokemonType, pokemonType2, backgroundImage, backgroundGradient, backgroundBorder]
 }

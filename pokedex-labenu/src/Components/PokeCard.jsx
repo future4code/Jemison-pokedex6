@@ -14,7 +14,7 @@ function PokeCard({ nomePokemon, url }) {
     const [pokemonID, setPokemonID] = useState()
 
     const pokeSpritesAnim = pokemonCard && pokemonCard.sprites && pokemonCard.sprites.versions['generation-v']['black-white'].animated
-    const [pokemonType, pokemonType2, backgroundImage, backgroundCards] = useColors(!context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[0].type.name, !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1]?.type.name ? !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1].type.name : null);
+    const [pokemonType, pokemonType2, backgroundImage, backgroundCards, backgroundBorder] = useColors(!context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[0].type.name, !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1]?.type.name ? !context.isLoading && pokemonCard && pokemonCard.types && pokemonCard.types[1].type.name : null);
 
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -42,7 +42,7 @@ function PokeCard({ nomePokemon, url }) {
 
     const addPokemonPokedex = (pokemon) => {
         context.setPokedex([...context.pokedex, pokemon])
-        const newList = context.listPokemons.filter(function (poke) { return pokemon.name != poke.name; });
+        const newList = context.listPokemons.filter(function (poke) { return pokemon.name !== poke.name; });
         context.setListPokemons(newList)
         if (context.pokedex.length === 0) {
             alert(`Pokemon capturado com sucesso! Encontre seus Pokemons clicando no ícone de Pokedex no canto direito da tela.`)
@@ -52,7 +52,7 @@ function PokeCard({ nomePokemon, url }) {
     return (
         <DivPai >
             <Card>
-                <TypeBackground2 backgroundCards={backgroundCards()}>
+                <TypeBackground2 backgroundCards={backgroundCards()} backgroundBorder={backgroundBorder()}>
                     <img id="wmball" src={pokeballWaterMark} alt="waterMark_pokeball" />
                     <Infos>
                         <NamePokemon>
@@ -71,7 +71,5 @@ function PokeCard({ nomePokemon, url }) {
             </Card>
         </DivPai>
     )
-
-
 }
 export default PokeCard
