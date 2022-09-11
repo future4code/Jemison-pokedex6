@@ -14,4 +14,5 @@ O que funciona:
 - Página de detalhes com informações e estilização personalizada para cada Pokemon.
 
 O que não funciona: 
+- Quando a Pokedex fica muito cheia, a página não carrega.
 - Design não responsivo.
