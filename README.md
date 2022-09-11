@@ -14,5 +14,4 @@ O que funciona:
 - Página de detalhes com informações e estilização personalizada para cada Pokemon.
 
 O que não funciona: 
-- Após entrar e sair da página Pokedex, o Pokemon capturado volta à lista com todos os outros.
 - Design não responsivo.
