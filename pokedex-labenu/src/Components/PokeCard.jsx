@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { DivPai, NamePokemon, NumberPokemon, Card, ImageCard, ImgCatch, TypeBackground2, Infos, BotaoCapturar } from '../Styles/StyleDetails'
+import { useNavigate } from 'react-router-dom';
+import { DivPai, NamePokemon, NumberPokemon, Card, ImageCard, ImgCatch, TypeBackground2, Infos, BotaoCapturar, ImgInfo } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 import { useColors } from '../Hooks/useColors'
 import catchItBtn from '../Styles/img/Catchit.png'
+import infoBtn from '../Styles/img/Info.png'
 import pokeballWaterMark from '../Styles/img/Pokebola_watermark 1.png'
 import axios from 'axios';
 
 function PokeCard({ nomePokemon, url }) {
     const context = useContext(GlobalContext)
+    const navigate = useNavigate();
+
+    const goToDetails = (navigate) => { navigate(`/details/${pokemonCard.id}`) }
 
     const [isLoading, setIsLoading] = useState(false)
     const [pokemonCard, setPokemonCard] = useState({})
@@ -66,6 +71,7 @@ function PokeCard({ nomePokemon, url }) {
                     {!isLoading && pokeSpritesAnim && <ImageCard src={pokeSpritesAnim.front_default} alt={`${pokemonCard.name}_front_image`} />}
                     <BotaoCapturar>
                         <ImgCatch onClick={() => addPokemonPokedex(pokemonCard)} src={catchItBtn} alt="catch_button" />
+                        <ImgInfo onClick={() => goToDetails(navigate)} src={infoBtn} alt="info_button" />
                     </BotaoCapturar>
                 </TypeBackground2>
             </Card>
