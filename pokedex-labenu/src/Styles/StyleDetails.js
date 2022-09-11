@@ -212,8 +212,8 @@ export const ContainerPagination = styled.div  `
 export const ImgCatch = styled.img`
     cursor: pointer;
     position: absolute;
-    width: 6.5em;
-    transform: translate(-1.75em, -1.75em);
+    width: 5.25em;
+    transform: translate(-2.5em, -0.1em);
     filter: drop-shadow(-3px 3px 1px rgba(0,0,0,.5));
 `
 
