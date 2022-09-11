@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Jennifer Perucci de Almeida
 - Cristiane de Lima Borges
 
-Link do Surge: happypotter-pokedex-final.surge.sh
+Link do Surge: pokedex-labenu-06.surge.sh
 
 O que funciona:
 - Paginação
