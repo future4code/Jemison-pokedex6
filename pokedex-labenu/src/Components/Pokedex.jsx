@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToHome } from './../Route/Coordinator';
 import CardPokedex from './CardPokedex';
-import { DivPai, BarPokedex, CardsHome, BarLogosPokedex, NoPokemons } from '../Styles/StyleDetails'
+import { DivPaiPokedex, BarPokedex, CardsHome, BarLogosPokedex, NoPokemons } from '../Styles/StyleDetails'
 import { PokedexVazia } from '../Styles/StylesNovo'
 import GlobalContext from './../Context/GlobalContext';
 import logo from '../Styles/img/PokeLogo.png'
@@ -14,7 +14,6 @@ function Pokedex() {
 
     useEffect(() => {
         localStorage.setItem('cartt', JSON.stringify(context.pokedex))
-        console.count("renderizou")
     }, [context.pokedex])
 
     const removePokemon = (pokemonToRemove) => {
@@ -31,10 +30,9 @@ function Pokedex() {
     })
 
     
-
     if (context.pokedex.length === 0) {
         return (
-            <DivPai>
+            <DivPaiPokedex>
                 <BarPokedex>
                     <BarLogosPokedex>
                         <img onClick={() => goToHome(navigate)} src={logo} alt="pokemon_logo" />
@@ -46,11 +44,11 @@ function Pokedex() {
                         <span>Sem Pokemons</span>
                     </NoPokemons>
                 </PokedexVazia>
-            </DivPai>
+            </DivPaiPokedex>
         )
     } else {
         return (
-            <DivPai>
+            <DivPaiPokedex>
                 <BarPokedex>
                     <BarLogosPokedex>
                         <img onClick={() => goToHome(navigate)} src={logo} alt="pokemon_logo" />
@@ -60,7 +58,7 @@ function Pokedex() {
                 <CardsHome>
                     {cards}
                 </CardsHome>
-            </DivPai>
+            </DivPaiPokedex>
         )
     }
 }

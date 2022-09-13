@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToPokedex } from './../Route/Coordinator';
-import { DivPai, CardsHome, BarHome, ButtonsHome, BarLogos } from '../Styles/StyleDetails'
+import { DivPai, CardsHome, BarHome, BarLogos, ContainerPagination, NoPokemonsHome, HeroContent } from '../Styles/StyleDetails'
 import GlobalContext from './../Context/GlobalContext';
 import PokeCard from './PokeCard';
 import logo from '../Styles/img/PokeLogo.png'
+import pikachuBG from '../Styles/img/Pikachu_BG.jpg'
 import pokedexLogo from '../Styles/img/Pokedex_logo.png'
 import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
@@ -31,39 +32,70 @@ function Home() {
 
     const handleChange = (e, value) => {
         context.setPage(value)
-        const jghc = (value - 1) * 30
-        context.setPageChange(jghc)
-      }
+        const offset = (value - 1) * 16
+        context.setPageChange(offset)
+    }
 
-      useEffect(() => {
+    useEffect(() => {
         getListPokemons()
     }, [context.pageChange])
 
-    return (
-        <DivPai>
-            <BarHome>
-                <BarLogos>
-                    <img src={logo} alt="pokemon_logo" />
-                    <img id="dex" onClick={() => goToPokedex(navigate)} src={pokedexLogo} alt="pokedex_logo" />
-                </BarLogos>
-            </BarHome>
-            <CardsHome>
-                {pokemons}
-            </CardsHome>
-            <p>current page is {context.page}</p>
-            <Pagination
-                count={22}
-                shape="circular"
-                color="secondary"
-                variant="text"
-                size="large"
-                page={context.page}
-                onChange={handleChange}
-                hideNextButton={true}
-                hidePrevButton={true}
-            />
-        </DivPai>
-    )
+    if (context.listPokemons.length === 0) {
+        return (
+            <DivPai>
+                <BarHome>
+                    <BarLogos>
+                        <img src={logo} alt="pokemon_logo" />
+                        <img id="dex" onClick={() => goToPokedex(navigate)} src={pokedexLogo} alt="pokedex_logo" />
+                    </BarLogos>
+                </BarHome>
+                <HeroContent pikachuBG={pikachuBG}>
+                    <NoPokemonsHome>
+                        <p id="pokecap">Todos os Pokemóns desta página foram capturados.</p>
+                        <p id="prof">O Professor Carvalho ficaria orgulhoso de você!</p >
+                    </NoPokemonsHome>
+                </HeroContent>
+                <ContainerPagination>
+                    <Pagination
+                        count={40}
+                        shape="circular"
+                        color="primary"
+                        size="large"
+                        page={context.page}
+                        onChange={handleChange}
+                        hideNextButton={true}
+                        hidePrevButton={true}
+                    />
+                </ContainerPagination>
+            </DivPai>
+        )
+    } else {
+        return (
+            <DivPai>
+                <BarHome>
+                    <BarLogos>
+                        <img src={logo} alt="pokemon_logo" />
+                        <img id="dex" onClick={() => goToPokedex(navigate)} src={pokedexLogo} alt="pokedex_logo" />
+                    </BarLogos>
+                </BarHome>
+                <CardsHome>
+                    {pokemons}
+                </CardsHome>
+                <ContainerPagination>
+                    <Pagination
+                        count={40}
+                        shape="circular"
+                        color="primary"
+                        size="large"
+                        page={context.page}
+                        onChange={handleChange}
+                        hideNextButton={true}
+                        hidePrevButton={true}
+                    />
+                </ContainerPagination>
+            </DivPai>
+        )
+    }
 }
 
 export default Home
